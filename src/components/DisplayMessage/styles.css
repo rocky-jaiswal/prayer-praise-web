@@ -1,0 +1,15 @@
+@import '../../main.css';
+
+.display-message {
+  width: 50%;
+  padding: 20px 10px;
+  margin-bottom: 5px;
+  border-radius: var(--app-radius);
+  color: var(--main-white);
+  background-color: var(--main-red);
+}
+
+.hidden {
+  display: none;
+  visibility: none;
+}

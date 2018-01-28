@@ -1,0 +1,43 @@
+@import '../../main.css';
+
+.user-messages {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.message {
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+  padding: 20px;
+  margin: 5px 0;
+  border: 1px solid var(--main-gray);
+  background: var(--main-white);
+}
+
+.message span {
+  width: 33.33%;
+}
+
+.deleteButton {
+  align-self: center;
+  border: none;
+  padding: 5px;
+  border-radius: var(--app-radius);
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--main-white);
+  background: var(--main-red);
+}
+
+.editButton {
+  align-self: center;
+  border: none;
+  padding: 5px;
+  border-radius: var(--app-radius);
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--main-white);
+  background: var(--main-gray);
+}

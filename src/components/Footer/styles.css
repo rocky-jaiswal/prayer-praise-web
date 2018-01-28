@@ -1,0 +1,7 @@
+@import '../../main.css';
+
+.footer {
+  background-color: var(--main-red);
+  color: var(--main-white);
+  padding: 10px;
+}

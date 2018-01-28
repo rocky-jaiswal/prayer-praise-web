@@ -1,0 +1,40 @@
+@import '../../main.css';
+
+.heading {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: var(--main-red);
+  color: var(--main-white);
+  padding: 10px;
+}
+
+.heading h1 {
+  text-shadow: 2px 2px 2px rgba(0,0,0,0.3);
+}
+
+.options {
+  display: flex;
+  flex-direction: row;
+}
+
+.options button.language {
+  margin-right: 5px;
+  font-size: 1.1em;
+  color: var(--main-white);
+  text-decoration: underline;
+  cursor: pointer;
+  background: none;
+  border: none;
+  outline: none;
+}
+
+.heading h1 {
+  margin: 0;
+  padding-top: 8px;
+}
+
+.heading h1 a {
+  color: var(--main-white);
+  text-decoration: none;
+}

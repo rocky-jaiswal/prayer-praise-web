@@ -1,0 +1,30 @@
+@import '../../main.css';
+
+.root-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.root-heading {
+  display: flex;
+  flex-direction: row;
+}
+
+.root-heading h1 {
+  text-transform: uppercase;
+  margin-right: 10px;
+}
+
+.reload {
+  width: 40px;
+  height: 40px;
+  padding-top: 2.5px;
+  margin: 20px 0;
+  border: none;
+  border-radius: 50%;
+  color: var(--main-white);
+  background-color: var(--main-green);
+  outline: none;
+  font-size: x-large;
+  font-weight: 900;
+}

@@ -1,0 +1,33 @@
+:root {
+  --main-red:    #F75468;
+  --main-white:  #FEFEFE;
+  --main-dark:   #404C6A;
+  --main-green:  #16BF97;
+  --main-gray:   #B1CAD2;
+  --main-pastel: #FFE8D6;
+  --main-darkp:  #DDE4CE;
+  --main-text:   #1F3A58;
+  --app-radius: 2px;
+  --main-font: 'Lato', sans-serif;
+  --main-display-font: 'Boogaloo', serif;
+  --main-cursive-font: 'Kalam', cursive;
+}
+
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: var(--main-font);
+  color: var(--main-text);
+}
+
+h1, h2, h3 {
+  font-family: var(--main-display-font);
+}
+
+#root {
+  min-height: 100%;
+  min-width: 100%;
+  display: flex;
+}

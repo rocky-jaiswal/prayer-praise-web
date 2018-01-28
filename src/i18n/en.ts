@@ -1,0 +1,28 @@
+export default {
+  'container.Me.heading' : 'My data',
+  'container.Root.heading' : 'Welcome Church',
+  // tslint:disable-next-line:object-literal-sort-keys
+  'components.Header.main': 'BICC - Prayers and Praises',
+  'components.Footer.main': '❤ Berlin 2017',
+  'components.Badge.praise': 'Praise',
+  'components.Badge.prayer': 'Prayer',
+  'actions.edit': 'Edit',
+  'actions.delete': 'Delete',
+  'actions.submit': 'Submit',
+  'actions.login': 'Login',
+  'actions.logout': 'Logout',
+  'actions.reload': 'Reload',
+  'share.options.noone': 'Share with no one',
+  'share.options.prayerTeam': 'Share with prayer team',
+  'share.options.everyone': 'Share with everyone',
+  'component.Sidebar.homeLink': 'Home',
+  'component.Sidebar.prayerLink': 'Prayer',
+  'component.Sidebar.praiseLink': 'Praise',
+  'component.Sidebar.meLink': 'Me',
+  'component.FormHeading.Prayer': 'Prayer',
+  'component.FormHeading.Praise': 'Praise',
+  'component.form.characters': ' chars',
+  'message.success': 'Thank you! The message was saved successfully.',
+  'message.failure': 'Save unsuccessful! Please refresh and try later.',
+  'message.blank': ' '
+};

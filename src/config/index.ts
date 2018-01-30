@@ -1,19 +1,24 @@
 const environmentConfiguration = (environment: string) => {
 
+  const defaults = {
+    baseURL: `http://${window.location.hostname}:3001`,
+    callbackURL : `http://${window.location.hostname}:3000/authCallback`
+  };
+
   if (environment === 'development') {
+    return defaults;
+  }
+  if (environment === 'heroku') {
     return {
-      baseURL: `http://${window.location.hostname}:3001`,
-      callbackURL : `http://${window.location.hostname}:3000/authCallback`
+      baseURL: `https://prayer-praise-main-service.herokuapp.com`,
+      callbackURL : `https://prayer-praise-web.herokuapp.com/authCallback`
     };
   }
-  return {
-    baseURL: `https://${window.location.hostname}/api`,
-    callbackURL: `https://${window.location.hostname}/authCallback`
-  };
+  return defaults;
 };
 
 const Config = {
-  env: environmentConfiguration(process.env.APP_ENV || 'development')
+  env: environmentConfiguration(process.env.REACT_APP_APP_ENV || 'development')
 };
 
 export default Config;

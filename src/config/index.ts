@@ -10,8 +10,8 @@ const environmentConfiguration = (environment: string) => {
   }
   if (environment === 'heroku') {
     return {
-      baseURL: `https://prayer-praise-main-service.herokuapp.com`,
-      callbackURL : `https://prayer-praise-web.herokuapp.com/authCallback`
+      baseURL: `https://pray-api.berlin.church`,
+      callbackURL : `https://pray.berlin.church/authCallback`
     };
   }
   return defaults;

@@ -1,7 +1,9 @@
 import * as React from 'react';
 import * as Loadable from 'react-loadable';
 
-const Loading = () => <div>Loading...</div>;
+import LoadingSpinner from '../components/LoadingSpinner';
+
+const Loading = () => <LoadingSpinner />;
 
 const Root = Loadable({
   loader: () => import('../containers/Root'),

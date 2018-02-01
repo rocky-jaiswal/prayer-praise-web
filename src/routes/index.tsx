@@ -1,9 +1,22 @@
 import * as React from 'react';
 import * as Loadable from 'react-loadable';
 
+import Layout from '../components/Layout';
 import LoadingSpinner from '../components/LoadingSpinner';
 
-const Loading = () => <LoadingSpinner />;
+const Loading = () => {
+  return (
+    <Layout
+      auth0={{}}
+      sidebarVisible={true}
+      logout={() => ({ type: ''})}
+      switchLanguage={() => ({ type: ''})}
+      toggleSidebar={() => ({ type: ''})}
+    >
+      <LoadingSpinner />
+    </Layout>
+  );
+};
 
 const Root = Loadable({
   loader: () => import('../containers/Root'),

@@ -3,7 +3,7 @@ export default {
   'container.Root.heading' : 'Welcome Church',
   // tslint:disable-next-line:object-literal-sort-keys
   'components.Header.main': 'BICC - Prayers and Praises',
-  'components.Footer.main': '❤ Berlin 2017',
+  'components.Footer.main': '❤ Berlin 2018',
   'components.Badge.praise': 'Praise',
   'components.Badge.prayer': 'Prayer',
   'actions.edit': 'Edit',

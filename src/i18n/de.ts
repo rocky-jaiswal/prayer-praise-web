@@ -3,7 +3,7 @@ export default {
   'container.Root.heading' : 'Willkommen',
   // tslint:disable-next-line:object-literal-sort-keys
   'components.Header.main': 'BICC - Gebetsanliegen und Lob',
-  'components.Footer.main': '❤ Berlin 2017',
+  'components.Footer.main': '❤ Berlin 2018',
   'components.Badge.praise': 'Lob',
   'components.Badge.prayer': 'Gebetsanliegen',
   'actions.edit': 'Bearbeiten',

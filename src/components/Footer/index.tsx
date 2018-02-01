@@ -8,7 +8,9 @@ class Footer extends React.PureComponent {
   render() {
     return (
       <div className={'footer'}>
-        <FormattedMessage id="components.Footer.main" />
+        <a href="https://berlin.church">
+          <FormattedMessage id="components.Footer.main" />
+        </a>
       </div>
     );
   }

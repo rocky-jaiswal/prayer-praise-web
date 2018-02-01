@@ -17,12 +17,9 @@ import { AppStateType } from '../constants/types';
 
 export const istate: AppStateType = {
   auth0: {
-    // tslint:disable-next-line:no-string-literal
-    domain: process.env['REACT_APP_AUTH0_DOMAIN'] || 'example.com',
-    // tslint:disable-next-line:no-string-literal
-    clientID: process.env['REACT_APP_AUTH0_CLIENT_ID'] || 'changeme',
-    // tslint:disable-next-line:no-string-literal
-    audience: `https://${process.env['REACT_APP_AUTH0_DOMAIN']}/userinfo` || 'changeme.example.com',
+    domain: process.env.REACT_APP_AUTH0_DOMAIN || 'example.com',
+    clientID: process.env.REACT_APP_AUTH0_CLIENT_ID || 'changeme',
+    audience: `https://${process.env.REACT_APP_AUTH0_DOMAIN}/userinfo` || 'changeme.example.com',
     redirectUri: config.env.callbackURL,
     responseType: 'token id_token',
     scope: 'openid profile'

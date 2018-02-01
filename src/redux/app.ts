@@ -18,7 +18,7 @@ import { AppStateType } from '../constants/types';
 export const istate: AppStateType = {
   auth0: {
     // tslint:disable-next-line:no-string-literal
-    domain: process.env['REACT_APP_DOMAIN'] || 'example.com',
+    domain: process.env['REACT_APP_AUTH0_DOMAIN'] || 'example.com',
     // tslint:disable-next-line:no-string-literal
     clientID: process.env['REACT_APP_AUTH0_CLIENT_ID'] || 'changeme',
     // tslint:disable-next-line:no-string-literal

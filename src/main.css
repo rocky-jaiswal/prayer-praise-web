@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Abril+Fatface|Open+Sans');
+
 :root {
   --main-red:    #F75468;
   --main-white:  #FEFEFE;
@@ -8,8 +10,8 @@
   --main-darkp:  #DDE4CE;
   --main-text:   #1F3A58;
   --app-radius: 2px;
-  --main-font: 'Lato', sans-serif;
-  --main-display-font: 'Boogaloo', serif;
+  --main-font: 'Open Sans', sans-serif;
+  --main-display-font: 'Abril Fatface', serif;
   --main-cursive-font: 'Kalam', cursive;
 }
 

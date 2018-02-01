@@ -10,7 +10,21 @@
 }
 
 .heading h1 {
+  margin: 0;
+  padding-top: 8px;
   text-shadow: 2px 2px 2px rgba(0,0,0,0.3);
+}
+
+@media (max-height: 800px) {
+  .heading {
+    display: flex;
+    align-items: center;
+  }
+
+  .heading h1 {
+    font-size: 18px;
+    padding: 0;
+  }
 }
 
 .options {
@@ -27,11 +41,6 @@
   background: none;
   border: none;
   outline: none;
-}
-
-.heading h1 {
-  margin: 0;
-  padding-top: 8px;
 }
 
 .heading h1 a {

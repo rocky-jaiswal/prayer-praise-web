@@ -86,7 +86,7 @@ export function appReducer(state: any = initialState, action: any) {
 
     case TOGGLE_SIDEBAR:
       return state
-        .set('sidebarVisible', !state.get('sidebarVisible'));
+        .set('sidebarVisible', !state.sidebarVisible);
 
     case RESET_SIDEBAR:
       return state

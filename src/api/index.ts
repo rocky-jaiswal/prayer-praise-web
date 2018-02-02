@@ -30,9 +30,9 @@ const AppAPI = {
       .post(Config.env.baseURL + '/messages', { message });
   },
 
-  async fetchSharedMessages() {
+  async fetchSharedMessages(page: number = 1) {
     return await AppAPI.init()
-      .get(Config.env.baseURL + '/sharedMessages');
+      .get(`${Config.env.baseURL}/sharedMessages?page=${page}`);
   },
 
   async fetchMyMessages() {

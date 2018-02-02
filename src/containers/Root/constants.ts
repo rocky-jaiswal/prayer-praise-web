@@ -3,3 +3,4 @@ export const FETCH_SHARED_MESSAGES_INFLIGHT = 'app/PrayerPraiseForm/FETCH_SHARED
 export const FETCH_SHARED_MESSAGES_SUCCESS  = 'app/PrayerPraiseForm/FETCH_SHARED_MESSAGES_SUCCESS';
 export const FETCH_SHARED_MESSAGES_FAILED   = 'app/PrayerPraiseForm/FETCH_SHARED_MESSAGES_FAILED';
 export const EXPAND_MESSAGE                 = 'app/PrayerPraiseForm/EXPAND_MESSAGE';
+export const SET_PAGE                       = 'app/PrayerPraiseForm/SET_PAGE';

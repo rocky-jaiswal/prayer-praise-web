@@ -5,7 +5,8 @@ import {
   EXPAND_MESSAGE,
   FETCH_SHARED_MESSAGES_FAILED,
   FETCH_SHARED_MESSAGES_INFLIGHT,
-  FETCH_SHARED_MESSAGES_SUCCESS
+  FETCH_SHARED_MESSAGES_SUCCESS,
+  SET_PAGE
 } from '../containers/Root/constants';
 
 const init: SharedMessagesType = {
@@ -13,7 +14,11 @@ const init: SharedMessagesType = {
   error: undefined,
   expandedMessage: undefined,
   loading: false,
-  messages: []
+  messages: [],
+  currentPage: 1,
+  size: 20,
+  totalElements: 0,
+  totalPages: 1
 };
 
 export const initialState = Immutable.from(init);
@@ -22,6 +27,10 @@ export const initialState = Immutable.from(init);
 export function sharedMessagesReducer(state: any = initialState, action: ActionType<any>) {
   switch (action.type) {
 
+    case SET_PAGE:
+      return state
+        .set('currentPage', action.payload);
+
     case FETCH_SHARED_MESSAGES_INFLIGHT:
       return state
         .set('loading', true);
@@ -29,7 +38,11 @@ export function sharedMessagesReducer(state: any = initialState, action: ActionT
     case FETCH_SHARED_MESSAGES_SUCCESS:
       return state
         .set('loading', false)
-        .set('messages', action.payload)
+        .set('messages', action.payload.content)
+        .set('currentPage', parseInt(action.payload.currentPage, 10))
+        .set('size', action.payload.size)
+        .set('totalElements', action.payload.totalElements)
+        .set('totalPages', action.payload.totalPages)
         .set('displayMessage', undefined);
 
     case FETCH_SHARED_MESSAGES_FAILED:

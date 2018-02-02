@@ -3,7 +3,8 @@ import {
   FETCH_SHARED_MESSAGES,
   FETCH_SHARED_MESSAGES_FAILED,
   FETCH_SHARED_MESSAGES_INFLIGHT,
-  FETCH_SHARED_MESSAGES_SUCCESS
+  FETCH_SHARED_MESSAGES_SUCCESS,
+  SET_PAGE
 } from './constants';
 
 export function fetchSharedMessages() {
@@ -36,5 +37,12 @@ export function expandMessage(payload: number) {
   return {
     payload,
     type: EXPAND_MESSAGE
+  };
+}
+
+export function setPage(payload: number) {
+  return {
+    payload,
+    type: SET_PAGE
   };
 }

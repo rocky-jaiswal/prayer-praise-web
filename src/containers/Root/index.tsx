@@ -4,11 +4,12 @@ import { connect } from 'react-redux';
 
 import { ActionType, Dispatch, SharedMessageType, RootStateType } from '../../constants/types';
 import { withUserProfile } from '../Main';
-import { expandMessage, fetchSharedMessages } from './actions';
+import { expandMessage, fetchSharedMessages, setPage } from './actions';
 
 import DisplayMessage from '../../components/DisplayMessage';
 import LoadingSpinner from '../../components/LoadingSpinner';
 import MessageCards from '../../components/MessageCards';
+import Paginator from '../../components/Paginator';
 
 import './styles.css';
 
@@ -17,10 +18,15 @@ interface StateProps {
   expandedMessage?: number;
   loading: boolean;
   sharedMessages: SharedMessageType[];
+  currentPage: number;
+  size: number;
+  totalElements: number;
+  totalPages: number;
 }
 
 interface DispatchProps {
   expandMessage(id?: number): ActionType<number>;
+  setPage(page: number): ActionType<number>;
   fetchSharedMessages(): ActionType<void>;
 }
 
@@ -29,12 +35,17 @@ const mapStateToProps = (state: RootStateType): StateProps => {
     displayMessage: state.sharedMessages.displayMessage,
     expandedMessage: state.sharedMessages.expandedMessage,
     loading: state.sharedMessages.loading,
-    sharedMessages: state.sharedMessages.messages
+    sharedMessages: state.sharedMessages.messages,
+    currentPage: state.sharedMessages.currentPage,
+    size: state.sharedMessages.size,
+    totalElements: state.sharedMessages.totalElements,
+    totalPages: state.sharedMessages.totalPages
   };
 };
 
 const mapDispatchToProps = (dispatch: Dispatch): DispatchProps => {
   return {
+    setPage: (page: number) => (dispatch(setPage(page))),
     expandMessage: (payload: number) => (dispatch(expandMessage(payload))),
     fetchSharedMessages: () => (dispatch(fetchSharedMessages()))
   };
@@ -66,10 +77,28 @@ export class Root extends React.Component<StateProps & DispatchProps> {
             ↻
           </button>
         </div>
+        <Paginator
+          currentPage={this.props.currentPage}
+          totalPages={this.props.totalPages}
+          fetchSharedMessages={(page) => {
+              this.props.setPage(page);
+              this.props.fetchSharedMessages();
+            }
+          }
+        />
         <MessageCards
           expand={this.props.expandMessage}
           expandedMessage={this.props.expandedMessage}
           sharedMessages={this.props.sharedMessages}
+        />
+        <Paginator
+          currentPage={this.props.currentPage}
+          totalPages={this.props.totalPages}
+          fetchSharedMessages={(page) => {
+              this.props.setPage(page);
+              this.props.fetchSharedMessages();
+            }
+          }
         />
       </div>
     );

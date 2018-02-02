@@ -1,4 +1,4 @@
-import { call, put, takeLatest } from 'redux-saga/effects';
+import { call, put, select, takeLatest } from 'redux-saga/effects';
 
 import {
   fetchSharedMessagesFailed,
@@ -12,7 +12,8 @@ import AppAPI from '../api';
 export function* getSharedMessages() {
   try {
     yield put(fetchSharedMessagesInProgress());
-    const result = yield call(AppAPI.fetchSharedMessages);
+    const state = yield select();
+    const result = yield call(AppAPI.fetchSharedMessages, state.sharedMessages.currentPage);
     yield put(fetchSharedMessagesSuccessful(result.data));
   } catch (err) {
     // tslint:disable-next-line:no-console

@@ -61,6 +61,10 @@ interface SharedMessages {
   expandedMessage?: number;
   loading: boolean;
   messages: SharedMessage[];
+  currentPage: number;
+  size: number;
+  totalElements: number;
+  totalPages: number;
 }
 
 export type SharedMessagesType = SharedMessages;

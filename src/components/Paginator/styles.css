@@ -1,0 +1,23 @@
+@import '../../main.css';
+
+.paginator {
+  display: flex;
+}
+
+.pager {
+  margin-right: 10px;
+  border: none;
+  padding: 10px 13px;
+  border-radius: 50%;
+  background-color: var(--main-red);
+  color: var(--main-white);
+}
+
+.pager-inactive {
+  margin-right: 10px;
+  border: none;
+  padding: 10px 13px;
+  border-radius: 50%;
+  background-color: var(--main-white);
+  color: var(--main-dark);
+}

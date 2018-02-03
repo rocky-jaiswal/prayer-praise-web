@@ -68,7 +68,7 @@ export class Me extends React.Component<AppProps, never> {
     }
     return (
       <div className="container">
-        <h2><FormattedMessage id="container.Me.heading" />{this.props.isAdmin ? '(Admin*)' : ''}</h2>
+        <h2><FormattedMessage id="container.Me.heading" />{this.props.isAdmin ? ' (Admin*)' : ''}</h2>
         <MyMessages
           messages={this.props.messages}
           setMessageToView={this.props.setMessageToView}

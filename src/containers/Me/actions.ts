@@ -17,7 +17,8 @@ import {
   UPDATE_MESSAGE,
   UPDATE_MESSAGE_FAILED,
   UPDATE_MESSAGE_INFLIGHT,
-  UPDATE_MESSAGE_SUCCESS
+  UPDATE_MESSAGE_SUCCESS,
+  SET_MESSAGE_TO_VIEW
 } from './constants';
 import { ShareStatus } from '../../constants/enums';
 
@@ -144,5 +145,18 @@ export function setMessageToEdit(payload: number) {
   return {
     payload,
     type: SET_MESSAGE_TO_EDIT
+  };
+}
+
+export function setMessageToView(payload: number) {
+  return {
+    payload,
+    type: SET_MESSAGE_TO_VIEW
+  };
+}
+
+export function unsetMessageToView() {
+  return {
+    type: SET_MESSAGE_TO_VIEW
   };
 }

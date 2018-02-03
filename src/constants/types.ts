@@ -31,6 +31,7 @@ interface AppState {
   sidebarVisible: boolean;
   tokenExpiresAt?: number;
   username?: string;
+  admin: boolean;
 }
 export type AppStateType = AppState;
 
@@ -84,6 +85,7 @@ interface MyData {
   loading: boolean;
   myMessages: SharedMessage[];
   messageForEdit: MessageForEdit;
+  selectedMessageId: number | null;
 }
 
 export type MyDataType = MyData;

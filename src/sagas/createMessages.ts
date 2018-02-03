@@ -10,7 +10,7 @@ import {
 
 import API from '../api';
 
-export function* submitMessage() {
+function* createMessage() {
   try {
     yield put(submitMessageInProgress());
 
@@ -28,11 +28,6 @@ export function* submitMessage() {
   }
 }
 
-export function* messages() {
-  yield takeLatest(SUBMIT_MESSAGE, submitMessage);
+export function* createMessageWatcher() {
+  yield takeLatest(SUBMIT_MESSAGE, createMessage);
 }
-
-// Bootstrap sagas
-export default [
-  messages
-];

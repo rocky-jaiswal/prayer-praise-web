@@ -16,7 +16,9 @@ import {
   SET_MESSAGE_TO_EDIT,
   UPDATE_MESSAGE_FAILED,
   UPDATE_MESSAGE_INFLIGHT,
-  UPDATE_MESSAGE_SUCCESS
+  UPDATE_MESSAGE_SUCCESS,
+  SET_MESSAGE_TO_VIEW,
+  UNSET_MESSAGE_TO_VIEW
 } from '../containers/Me/constants';
 
 const istate: MyDataType = {
@@ -29,7 +31,8 @@ const istate: MyDataType = {
     sharedStatus: undefined,
     messageType: undefined
   },
-  myMessages: []
+  myMessages: [],
+  selectedMessageId: null
 };
 
 export const initialState = Immutable.from(istate);
@@ -69,6 +72,14 @@ export function myDataReducer(state: any = initialState, action: ActionType<any>
         .set('loading', false)
         .set('error', DELETE_MESSAGE_FAILED)
         .set('displayMessage', 'Please refresh / try again later.');
+
+    case SET_MESSAGE_TO_VIEW:
+      return state
+        .set('selectedMessageId', action.payload);
+
+    case UNSET_MESSAGE_TO_VIEW:
+      return state
+        .set('selectedMessageId', null);
 
     case SET_MESSAGE_TO_EDIT:
       return state

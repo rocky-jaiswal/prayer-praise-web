@@ -32,7 +32,8 @@ export const istate: AppStateType = {
   profilePic: null,
   sidebarVisible: true,
   tokenExpiresAt: undefined,
-  username: undefined
+  username: undefined,
+  admin: false
 };
 
 export const initialState = Immutable.from(istate);
@@ -69,6 +70,7 @@ export function appReducer(state: any = initialState, action: any) {
 
     case USER_PROFILE_LOADED:
       return state
+        .set('admin', action.payload.admin)
         .set('username', action.payload.name)
         .set('profilePic', action.payload.picture);
 

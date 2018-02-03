@@ -10,7 +10,7 @@ import { DELETE_MESSAGE } from '../containers/Me/constants';
 import AppAPI from '../api';
 import { ActionType } from '../constants/types';
 
-function* delMessage(action: ActionType<number>) {
+function* deleteMessage(action: ActionType<number>) {
   try {
     yield put(deleteMessageInProgress());
     const result = yield call(AppAPI.deleteMessage, action.payload);
@@ -22,6 +22,6 @@ function* delMessage(action: ActionType<number>) {
   }
 }
 
-export function* deleteMessage() {
-  yield takeLatest(DELETE_MESSAGE, delMessage);
+export function* deleteMessageWatcher() {
+  yield takeLatest(DELETE_MESSAGE, deleteMessage);
 }

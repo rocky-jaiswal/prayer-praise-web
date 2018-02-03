@@ -9,15 +9,51 @@
 .message {
   display: flex;
   flex-direction: row;
-  width: 80%;
+  width: 90%;
   padding: 20px;
   margin: 5px 0;
   border: 1px solid var(--main-gray);
   background: var(--main-white);
 }
 
-.message span {
-  width: 33.33%;
+.fullMessage {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  padding: 20px;
+  margin: 5px 0;
+  border: 1px solid var(--main-gray);
+  background: var(--main-white);
+}
+
+.messageText {
+  display: flex;
+  width: 50%;
+}
+
+.expandedMessageText {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.messageActions {
+  display: flex;
+  justify-content: space-between;
+  flex-grow: 1;
+}
+
+.viewButton {
+  align-self: center;
+  border: none;
+  padding: 5px;
+  border-radius: var(--app-radius);
+  text-transform: uppercase;
+  text-align: center;
+  border: 1px solid var(--main-red);
+  background-color: var(--main-white);
+  color: var(--main-red);
 }
 
 .deleteButton {
@@ -40,4 +76,10 @@
   text-align: center;
   color: var(--main-white);
   background: var(--main-gray);
+}
+
+.userName {
+  padding: 5px;
+  background-color: var(--main-dark);
+  color: var(--main-white);
 }

@@ -3,13 +3,18 @@ import { call, put, takeLatest } from 'redux-saga/effects';
 import {
   fetchMyMessagesFailed,
   fetchMyMessagesInProgress,
-  fetchMyMessagesSuccessful
+  fetchMyMessagesSuccessful,
 } from '../containers/Me/actions';
+
+import {
+  logout
+} from '../containers/App/actions';
+
 import { FETCH_MY_MESSAGES } from '../containers/Me/constants';
 
 import AppAPI from '../api';
 
-function* getMyMessages() {
+function* fetchMyMessages() {
   try {
     yield put(fetchMyMessagesInProgress());
     const result = yield call(AppAPI.fetchMyMessages);
@@ -18,9 +23,10 @@ function* getMyMessages() {
     // tslint:disable-next-line:no-console
     console.error(err);
     yield put(fetchMyMessagesFailed());
+    yield put(logout());
   }
 }
 
-export function* myMessages() {
-  yield takeLatest(FETCH_MY_MESSAGES, getMyMessages);
+export function* fetchMyMessagesWatcher() {
+  yield takeLatest(FETCH_MY_MESSAGES, fetchMyMessages);
 }

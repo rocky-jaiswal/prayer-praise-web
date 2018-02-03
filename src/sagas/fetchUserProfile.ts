@@ -1,5 +1,3 @@
-// import { LOCATION_CHANGE } from 'react-router-redux';
-// import { call, cancel, put, select, take, takeLatest } from 'redux-saga/effects';
 import { call, put, takeLatest } from 'redux-saga/effects';
 
 import {
@@ -11,7 +9,7 @@ import { FETCH_USER_PROFILE } from '../containers/App/constants';
 
 import AppAPI from '../api';
 
-export function* getUserProfile() {
+function* fetchUserProfile() {
   try {
     const result = yield call(AppAPI.fetchUserProfile);
     yield put(userProfileLoaded(result.data));
@@ -22,12 +20,6 @@ export function* getUserProfile() {
   }
 }
 
-export function* userProfile() {
-  yield takeLatest(FETCH_USER_PROFILE, getUserProfile);
-
-  // Suspend execution until location changes
-  // yield take(LOCATION_CHANGE);
-  // yield cancel(watcher);
+export function* fetchUserProfileWatcher() {
+  yield takeLatest(FETCH_USER_PROFILE, fetchUserProfile);
 }
-
-export default userProfile;

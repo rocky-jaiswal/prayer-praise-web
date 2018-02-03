@@ -9,7 +9,7 @@ import { UPDATE_MESSAGE } from '../containers/Me/constants';
 
 import AppAPI from '../api';
 
-function* updtMessage() {
+function* updateMessage() {
   try {
     yield put(updateMessageInProgress());
 
@@ -24,6 +24,6 @@ function* updtMessage() {
   }
 }
 
-export function* updateMessage() {
-  yield takeLatest(UPDATE_MESSAGE, updtMessage);
+export function* updateMessageWatcher() {
+  yield takeLatest(UPDATE_MESSAGE, updateMessage);
 }

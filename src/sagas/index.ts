@@ -1,42 +1,42 @@
 import {
-  userProfile
-} from './userProfile';
+  fetchUserProfileWatcher
+} from './fetchUserProfile';
 
 import {
-  tokenData
+  tokenDataWatcher
 } from './tokenData';
 
 import {
-  messages
-} from './messages';
+  createMessageWatcher
+} from './createMessages';
 
 import {
-  sharedMessages
+  fetchMyMessagesWatcher
+} from './fetchMyMessages';
+
+import {
+  sharedMessagesWatcher
 } from './sharedMessages';
 
 import {
-  myMessages
-} from './myMessages';
-
-import {
-  deleteMessage
+  deleteMessageWatcher
 } from './deleteMessage';
 
 import {
-  editMessage
+  editMessageWatcher
 } from './editMessage';
 
 import {
-  updateMessage
+  updateMessageWatcher
 } from './updateMessage';
 
 export default [
-  userProfile,
-  tokenData,
-  messages,
-  sharedMessages,
-  myMessages,
-  deleteMessage,
-  editMessage,
-  updateMessage
+  fetchUserProfileWatcher,
+  tokenDataWatcher,
+  createMessageWatcher,
+  fetchMyMessagesWatcher,
+  sharedMessagesWatcher,
+  deleteMessageWatcher,
+  editMessageWatcher,
+  updateMessageWatcher
 ];

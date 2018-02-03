@@ -10,7 +10,7 @@ import { EDIT_MESSAGE } from '../containers/Me/constants';
 import AppAPI from '../api';
 import { ActionType } from '../constants/types';
 
-function* edtMessage(action: ActionType<number>) {
+function* editMessage(action: ActionType<number>) {
   try {
     yield put(editMessageInProgress());
     const result = yield call(AppAPI.editMessage, action.payload);
@@ -22,6 +22,6 @@ function* edtMessage(action: ActionType<number>) {
   }
 }
 
-export function* editMessage() {
-  yield takeLatest(EDIT_MESSAGE, edtMessage);
+export function* editMessageWatcher() {
+  yield takeLatest(EDIT_MESSAGE, editMessage);
 }

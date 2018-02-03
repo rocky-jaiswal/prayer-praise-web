@@ -8,7 +8,7 @@ import { FETCH_TOKEN } from '../containers/App/constants';
 
 import AppAPI from '../api';
 
-export function* createToken() {
+function* tokenData() {
   const state = yield select();
   const accessToken = state.app.accessToken;
 
@@ -22,10 +22,6 @@ export function* createToken() {
   }
 }
 
-export function* tokenData() {
-  yield takeLatest(FETCH_TOKEN, createToken);
+export function* tokenDataWatcher() {
+  yield takeLatest(FETCH_TOKEN, tokenData);
 }
-
-export default [
-  tokenData
-];

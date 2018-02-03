@@ -9,7 +9,7 @@ import { FETCH_SHARED_MESSAGES } from '../containers/Root/constants';
 
 import AppAPI from '../api';
 
-export function* getSharedMessages() {
+function* getSharedMessages() {
   try {
     yield put(fetchSharedMessagesInProgress());
     const state = yield select();
@@ -22,6 +22,6 @@ export function* getSharedMessages() {
   }
 }
 
-export function* sharedMessages() {
+export function* sharedMessagesWatcher() {
   yield takeLatest(FETCH_SHARED_MESSAGES, getSharedMessages);
 }

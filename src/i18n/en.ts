@@ -6,6 +6,8 @@ export default {
   'components.Footer.main': '❤ Berlin 2018',
   'components.Badge.praise': 'Praise',
   'components.Badge.prayer': 'Prayer',
+  'actions.view': 'View',
+  'actions.collapse': '✕',
   'actions.edit': 'Edit',
   'actions.delete': 'Delete',
   'actions.submit': 'Submit',

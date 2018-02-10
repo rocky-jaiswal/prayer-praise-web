@@ -9,7 +9,7 @@ const AppAPI = {
     return axios.create({
       headers: {
         common: {
-          Authorization: sessionStorage.getItem('jwtToken') || ''
+          Authorization: localStorage.getItem('jwtToken') || ''
         }
       }
     });

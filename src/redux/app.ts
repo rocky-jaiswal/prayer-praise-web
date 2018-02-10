@@ -24,10 +24,10 @@ export const istate: AppStateType = {
     responseType: 'token id_token',
     scope: 'openid profile'
   },
-  accessToken: sessionStorage.getItem('accessToken'),
+  accessToken: localStorage.getItem('accessToken'),
   error: null,
   idToken: null,
-  jwtToken: sessionStorage.getItem('jwtToken'),
+  jwtToken: localStorage.getItem('jwtToken'),
   locale: 'en',
   profilePic: null,
   sidebarVisible: true,
@@ -49,14 +49,14 @@ export function appReducer(state: any = initialState, action: any) {
         .set('tokenExpiresAt', action.payload.tokenExpiresAt);
 
     case LOGOUT:
-      sessionStorage.clear();
+      localStorage.clear();
       return state
         .merge(initialState)
         .set('accessToken', null)
         .set('jwtToken', null);
 
     case TOKEN_LOADED:
-      sessionStorage.setItem('jwtToken', action.payload);
+      localStorage.setItem('jwtToken', action.payload);
       return state
         .set('jwtToken', action.payload);
 

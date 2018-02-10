@@ -2,7 +2,7 @@ import { History } from 'history';
 import { routerMiddleware } from 'react-router-redux';
 import { applyMiddleware, compose, createStore, Store } from 'redux';
 import createSagaMiddleware from 'redux-saga';
-import persistState from 'redux-sessionstorage';
+import persistState from 'redux-localstorage';
 import * as Immutable from 'seamless-immutable';
 
 import { RootStateType } from '../constants/types';

@@ -33,6 +33,9 @@ class MyMessages extends React.PureComponent<Props> {
             <div className={this.props.selectedMessageId === message.id ? 'fullMessage' : 'message'} key={message.id}>
               {this.showSummaryOrFullMessage(message)}
               <div className="messageActions">
+                <span className="shared-status">
+                  {message.sharedStatus}
+                </span>
                 <span>
                   <button
                     className={'viewButton'}

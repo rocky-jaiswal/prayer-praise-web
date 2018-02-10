@@ -16,6 +16,13 @@
   background: var(--main-white);
 }
 
+@media (max-width: 800px) {
+  .message {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
 .fullMessage {
   display: flex;
   flex-direction: column;
@@ -42,6 +49,13 @@
   display: flex;
   justify-content: space-between;
   flex-grow: 1;
+}
+
+.shared-status {
+  font-size: 0.8rem;
+  padding: 3px 3px 0 3px;
+  border-radius: var(--app-radius);
+  border: 1px dashed var(--main-gray);
 }
 
 .viewButton {

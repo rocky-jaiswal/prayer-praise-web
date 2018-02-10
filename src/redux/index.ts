@@ -26,7 +26,7 @@ export function createReducer(): Reducer<RootStateType> {
 
   const rootReducer = (state: RootStateType, action: ActionType<{}>): RootStateType => {
     // if (action.type === LOGOUT) {
-    //   sessionStorage.clear();
+    //   localStorage.clear();
     //   state = reduxInitialState;
     // }
     return reducer(state, action);

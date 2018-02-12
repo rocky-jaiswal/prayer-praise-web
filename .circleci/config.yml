@@ -1,0 +1,14 @@
+version: 2
+jobs:
+  docker:
+    - image: circleci/node:8-stretch
+  environment:
+    - CI: "true"
+  steps:
+    - checkout
+    - run:
+        name: Test
+        command: |
+          yarn install
+          npm run lint
+          npm run test

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Abril+Fatface|Open+Sans');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
 
 :root {
   --main-red:    #F75468;
@@ -11,8 +11,8 @@
   --main-text:   #1F3A58;
   --app-radius: 2px;
   --main-font: 'Open Sans', sans-serif;
-  --main-display-font: 'Abril Fatface', serif;
-  --main-cursive-font: 'Kalam', cursive;
+  --main-display-font: sans-serif;
+  --main-cursive-font: cursive;
 }
 
 body {

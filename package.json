@@ -22,6 +22,7 @@
   },
   "scripts": {
     "start": "react-scripts-ts start",
+    "lint": "npx tslint -c tslint.json 'src/**/*.ts*'",
     "build": "REACT_APP_APP_ENV=heroku REACT_APP_AUTH0_DOMAIN=berlin-church.eu.auth0.com REACT_APP_AUTH0_CLIENT_ID=3PY4nun7Cyjmj35iNNCIe6d1xO54ZJac react-scripts-ts build",
     "test": "react-scripts-ts test --env=jsdom",
     "eject": "react-scripts-ts eject"

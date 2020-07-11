@@ -1,10 +1,10 @@
-import * as React from 'react';
+import * as React from 'react'
 
-import { ActionType } from '../../constants/types';
-import './styles.css';
+import { ActionType } from '../../constants/types'
+import './styles.css'
 
 interface Props {
-  toggleSidebar(): ActionType<void>;
+  toggleSidebar(): ActionType<void>
 }
 
 const ExpandButton: React.SFC<Props> = (props) => {
@@ -16,7 +16,7 @@ const ExpandButton: React.SFC<Props> = (props) => {
         <div className={'menuBottom'} />
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default ExpandButton;
+export default ExpandButton

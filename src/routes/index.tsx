@@ -1,95 +1,58 @@
-import * as React from 'react';
-import * as Loadable from 'react-loadable';
-
-import Layout from '../components/Layout';
-import LoadingSpinner from '../components/LoadingSpinner';
-
-const Loading = () => {
-  return (
-    <Layout
-      auth0={{}}
-      sidebarVisible={true}
-      logout={() => ({ type: ''})}
-      switchLanguage={() => ({ type: ''})}
-      toggleSidebar={() => ({ type: ''})}
-    >
-      <LoadingSpinner />
-    </Layout>
-  );
-};
-
-const Root = Loadable({
-  loader: () => import('../containers/Root'),
-  loading: Loading,
-});
-
-const Prayer = Loadable({
-  loader: () => import('../containers/Prayer'),
-  loading: Loading,
-});
-
-const Praise = Loadable({
-  loader: () => import('../containers/Praise'),
-  loading: Loading,
-});
-
-const Me = Loadable({
-  loader: () => import('../containers/Me'),
-  loading: Loading,
-});
-
-const AuthCallback = Loadable({
-  loader: () => import('../containers/AuthCallback'),
-  loading: Loading,
-});
-
-const EditMessage = Loadable({
-  loader: () => import('../containers/EditMessage'),
-  loading: Loading,
-});
+import AuthCallback from '../containers/AuthCallback'
+import Root from '../containers/Root'
+import EditMessage from '../containers/EditMessage'
+import Me from '../containers/Me'
+import Praise from '../containers/Praise'
+import Prayer from '../containers/Prayer'
 
 interface RouteDefinition {
-  exact: boolean;
-  path: string;
-  // tslint:disable-next-line:no-any
-  component: any;
+  sequence: number
+  exact: boolean
+  path: string
+  component: any
 }
 
 interface Routes {
-  [propName: string]: RouteDefinition;
+  [propName: string]: RouteDefinition
 }
 
 const routes: Routes = {
   authCallback: {
     component: AuthCallback,
     exact: true,
-    path: '/authCallback'
+    path: '/authCallback',
+    sequence: 1,
   },
   base: {
     component: Root,
     exact: true,
-    path: '/'
+    path: '/',
+    sequence: 2,
   },
   editMessage: {
     component: EditMessage,
     exact: true,
-    path: '/edit/messages/:id'
+    path: '/edit/messages/:id',
+    sequence: 3,
   },
   me: {
     component: Me,
     exact: true,
-    path: '/me'
+    path: '/me',
+    sequence: 4,
   },
   praise: {
     component: Praise,
     exact: true,
-    path: '/praise'
+    path: '/praise',
+    sequence: 5,
   },
   prayer: {
     component: Prayer,
     exact: true,
-    path: '/prayer'
-  }
-};
+    path: '/prayer',
+    sequence: 6,
+  },
+}
 
-export default routes;
+export default routes

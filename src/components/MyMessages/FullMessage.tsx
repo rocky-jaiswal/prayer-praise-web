@@ -1,10 +1,10 @@
-import * as React from 'react';
+import * as React from 'react'
 
-import { SharedMessageType } from '../../constants/types';
-import './styles.css';
+import { SharedMessageType } from '../../constants/types'
+import './styles.css'
 
 interface Props {
-  message: SharedMessageType;
+  message: SharedMessageType
 }
 
 const FullMessage: React.SFC<Props> = (props) => {
@@ -13,7 +13,7 @@ const FullMessage: React.SFC<Props> = (props) => {
       {props.message.messageText}
       <span className="userName">- {props.message.username}</span>
     </div>
-  );
-};
+  )
+}
 
-export default FullMessage;
+export default FullMessage

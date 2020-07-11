@@ -1,10 +1,9 @@
-import * as React from 'react';
-import { FormattedMessage } from 'react-intl';
+import * as React from 'react'
+import { FormattedMessage } from 'react-intl'
 
-import './styles.css';
+import './styles.css'
 
 class Footer extends React.PureComponent {
-
   render() {
     return (
       <div className={'footer'}>
@@ -12,9 +11,8 @@ class Footer extends React.PureComponent {
           <FormattedMessage id="components.Footer.main" />
         </a>
       </div>
-    );
+    )
   }
-
 }
 
-export default Footer;
+export default Footer

@@ -1,30 +1,35 @@
-import { addLocaleData } from 'react-intl';
-import * as deLocaleData from 'react-intl/locale-data/de';
-import * as enLocaleData from 'react-intl/locale-data/en';
+import enTranslationMessages from './en'
+import deTranslationMessages from './de'
 
-import deTranslationMessages from './de';
-import enTranslationMessages from './en';
+import { LocaleEnum } from '../constants/enums'
 
-addLocaleData(enLocaleData);
-addLocaleData(deLocaleData);
+const DEFAULT_LOCALE = LocaleEnum.en.toString()
 
-const DEFAULT_LOCALE = 'en';
-
-export const appLocales = ['en', 'de'];
-
-export const formatTranslationMessages = (locale: string, messages: {}): {} => {
-  const defaultFormattedMessages = locale !== DEFAULT_LOCALE
-    ? formatTranslationMessages(DEFAULT_LOCALE, enTranslationMessages)
-    : {};
+export const formatTranslationMessages = (
+  locale: string,
+  messages: any
+): {} => {
+  const defaultFormattedMessages: any =
+    locale !== DEFAULT_LOCALE
+      ? formatTranslationMessages(DEFAULT_LOCALE, enTranslationMessages)
+      : {}
   return Object.keys(messages).reduce((formattedMessages, key) => {
-    const formattedMessage = !messages[key] && locale !== DEFAULT_LOCALE
-      ? defaultFormattedMessages[key]
-      : messages[key];
-    return Object.assign(formattedMessages, { [key]: formattedMessage });
-  },                                  {});
-};
+    const formattedMessage =
+      !messages[key] && locale !== DEFAULT_LOCALE
+        ? defaultFormattedMessages[key]
+        : messages[key]
+    return Object.assign(formattedMessages, { [key]: formattedMessage })
+    // tslint:disable-next-line:align
+  }, {})
+}
 
-export const translationMessages = {
-  de: formatTranslationMessages('de', deTranslationMessages),
-  en: formatTranslationMessages('en', enTranslationMessages)
-};
+export const translationMessages: any = {
+  en: formatTranslationMessages(
+    LocaleEnum.en.toString(),
+    enTranslationMessages
+  ),
+  de: formatTranslationMessages(
+    LocaleEnum.de.toString(),
+    deTranslationMessages
+  ),
+}

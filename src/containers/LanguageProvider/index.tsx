@@ -1,38 +1,26 @@
-import * as React from 'react';
-import { IntlProvider } from 'react-intl';
-import { connect } from 'react-redux';
+import * as React from 'react'
+import { useContext } from 'react'
+import { IntlProvider } from 'react-intl'
 
-import { translationMessages } from '../../i18n/';
-import { Dispatch, RootStateType } from '../../constants/types';
+import { translationMessages } from '../../i18n/'
+import { LocaleContext } from '../../containers/App'
 
-interface StateProps {
-  locale: string;
+interface Props {
+  children: React.ReactElement<{}>
 }
 
-function mapStateToProps(state: RootStateType): StateProps {
-  return {
-    locale: state.app.locale
-  };
+const LanguageProvider = (props: Props) => {
+  const context = useContext(LocaleContext)
+
+  return (
+    <IntlProvider
+      locale={context.locale}
+      key={context.locale}
+      messages={translationMessages[context.locale]}
+    >
+      {React.Children.only(props.children)}
+    </IntlProvider>
+  )
 }
 
-const mapDispatchToProps = (dispatch: Dispatch): {} => {
-  return {};
-};
-
-export class LanguageProvider extends React.Component<StateProps> {
-
-  render() {
-    return (
-      <IntlProvider
-        locale={this.props.locale}
-        key={this.props.locale}
-        messages={translationMessages[this.props.locale]}
-      >
-        {React.Children.only(this.props.children)}
-      </IntlProvider>
-    );
-  }
-
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(LanguageProvider);
+export default LanguageProvider

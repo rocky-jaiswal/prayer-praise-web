@@ -1,34 +1,18 @@
-import {
-  fetchUserProfileWatcher
-} from './fetchUserProfile';
+import { fetchUserProfileWatcher } from './fetchUserProfile'
 
-import {
-  tokenDataWatcher
-} from './tokenData';
+import { tokenDataWatcher } from './tokenData'
 
-import {
-  createMessageWatcher
-} from './createMessages';
+import { createMessageWatcher } from './createMessages'
 
-import {
-  fetchMyMessagesWatcher
-} from './fetchMyMessages';
+import { fetchMyMessagesWatcher } from './fetchMyMessages'
 
-import {
-  sharedMessagesWatcher
-} from './sharedMessages';
+import { sharedMessagesWatcher } from './sharedMessages'
 
-import {
-  deleteMessageWatcher
-} from './deleteMessage';
+import { deleteMessageWatcher } from './deleteMessage'
 
-import {
-  editMessageWatcher
-} from './editMessage';
+import { editMessageWatcher } from './editMessage'
 
-import {
-  updateMessageWatcher
-} from './updateMessage';
+import { updateMessageWatcher } from './updateMessage'
 
 export default [
   fetchUserProfileWatcher,
@@ -38,5 +22,5 @@ export default [
   sharedMessagesWatcher,
   deleteMessageWatcher,
   editMessageWatcher,
-  updateMessageWatcher
-];
+  updateMessageWatcher,
+]

@@ -1,6 +1,8 @@
 import * as React from 'react'
+import { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { push, RouterAction } from 'connected-react-router'
+import { useAuth0 } from '@auth0/auth0-react'
 
 import LoadingSpinner from '../../components/LoadingSpinner'
 import { ActionType, Dispatch, RootStateType } from '../../constants/types'
@@ -9,8 +11,7 @@ import { login } from '../App/actions'
 import './styles.css'
 
 interface StateProps {
-  // accessToken?: string | null
-  // auth0: any
+  jwtToken?: string | null
 }
 
 interface DispatchProps {
@@ -18,10 +19,9 @@ interface DispatchProps {
   changeRoute(route: string): RouterAction
 }
 
-function mapStateToProps(_state: RootStateType): StateProps {
+function mapStateToProps(state: RootStateType): StateProps {
   return {
-    // accessToken: state.app.accessToken,
-    // auth0: state.app.auth0,
+    jwtToken: state.app.jwtToken,
   }
 }
 
@@ -32,42 +32,38 @@ function mapDispatchToProps(dispatch: Dispatch): DispatchProps {
   }
 }
 
-export class AuthCallback extends React.Component<StateProps & DispatchProps> {
-  // handleAuthentication() {
-  //   buildAuth0(this.props.auth0).parseHash((err: {}, authResult: any) => {
-  //     if (err) {
-  //       console.error(err)
-  //       return
-  //     }
-  //     if (authResult && authResult.accessToken && authResult.idToken) {
-  //       this.props.login({
-  //         accessToken: authResult.accessToken,
-  //         idToken: authResult.idToken,
-  //         tokenExpiresAt: JSON.stringify(
-  //           authResult.expiresIn * 1000 + new Date().getTime()
-  //         ),
-  //       })
-  //     }
-  //   })
-  // }
+const AuthCallback = (props: StateProps & DispatchProps) => {
+  const { login, changeRoute, jwtToken } = props
+  const [accessToken, setAccessToken] = useState('')
+  const { getAccessTokenSilently } = useAuth0()
 
-  // componentDidMount() {
-  //   this.handleAuthentication()
-  // }
+  useEffect(() => {
+    async function waitForAccessToken() {
+      const token = await getAccessTokenSilently()
+      if (token !== '') {
+        setAccessToken(token)
+      }
+    }
+    waitForAccessToken()
+  }, [accessToken, setAccessToken, getAccessTokenSilently])
 
-  // componentWillReceiveProps(nextProps: StateProps) {
-  //   if (nextProps.accessToken) {
-  //     this.props.changeRoute('/')
-  //   }
-  // }
+  useEffect(() => {
+    if (accessToken !== '') {
+      login(accessToken)
+    }
+  }, [accessToken, login])
 
-  render() {
-    return (
-      <div className="container">
-        <LoadingSpinner />
-      </div>
-    )
-  }
+  useEffect(() => {
+    if (jwtToken) {
+      changeRoute('/')
+    }
+  }, [jwtToken, changeRoute])
+
+  return (
+    <div className="container">
+      <LoadingSpinner />
+    </div>
+  )
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(AuthCallback)

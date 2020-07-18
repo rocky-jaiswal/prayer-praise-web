@@ -23,7 +23,6 @@ const init: SharedMessagesType = {
 
 export const initialState = Immutable.from(init)
 
-// tslint:disable-next-line:no-any
 export function sharedMessagesReducer(
   state: any = initialState,
   action: ActionType<any>

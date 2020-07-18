@@ -1,9 +1,6 @@
 import * as Immutable from 'seamless-immutable'
 
-// import config from '../config'
-
 import {
-  LOGIN,
   LOGOUT,
   RESET_SIDEBAR,
   SWITCH_LANGUAGE,
@@ -17,19 +14,7 @@ import { AppStateType } from '../constants/types'
 import { LocaleEnum } from '../constants/enums'
 
 export const istate: AppStateType = {
-  // auth0: {
-  //   domain: process.env.REACT_APP_AUTH0_DOMAIN || 'example.com',
-  //   clientID: process.env.REACT_APP_AUTH0_CLIENT_ID || 'changeme',
-  //   audience:
-  //     `https://${process.env.REACT_APP_AUTH0_DOMAIN}/userinfo` ||
-  //     'changeme.example.com',
-  //   redirectUri: config.env.callbackURL,
-  //   responseType: 'token id_token',
-  //   scope: 'openid profile',
-  // },
-  // accessToken: localStorage.getItem('accessToken'),
-  // idToken: null,
-  // jwtToken: localStorage.getItem('jwtToken'),
+  jwtToken: sessionStorage.getItem('jwtToken'),
   error: null,
   locale: LocaleEnum.en,
   profilePic: null,
@@ -43,26 +28,16 @@ export const initialState = Immutable.from(istate)
 
 export function appReducer(state: any = initialState, action: any) {
   switch (action.type) {
-    case LOGIN:
-      return state
-        .set('accessToken', action.payload.accessToken)
-        .set('idToken', action.payload.idToken)
-        .set('tokenExpiresAt', action.payload.tokenExpiresAt)
-
     case LOGOUT:
-      localStorage.clear()
-      return state
-        .merge(initialState)
-        .set('accessToken', null)
-        .set('jwtToken', null)
+      sessionStorage.clear()
+      return state.merge(initialState).set('jwtToken', null)
 
     case TOKEN_LOADED:
-      localStorage.setItem('jwtToken', action.payload)
+      sessionStorage.setItem('jwtToken', action.payload)
       return state.set('jwtToken', action.payload)
 
     case TOKEN_LOAD_ERROR:
       return state
-        .set('accessToken', null)
         .set('jwtToken', null)
         .set('username', null)
         .set('profilePic', null)
@@ -76,7 +51,6 @@ export function appReducer(state: any = initialState, action: any) {
 
     case USER_PROFILE_LOAD_ERROR:
       return state
-        .set('accessToken', null)
         .set('jwtToken', null)
         .set('username', null)
         .set('profilePic', null)

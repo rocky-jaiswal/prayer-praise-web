@@ -54,33 +54,30 @@ function mapDispatchToProps(dispatch: Dispatch): DispatchProps {
 
 type AppProps = StateProps & DispatchProps
 
-export class Praise extends React.Component<AppProps, never> {
-  componentDidMount() {
-    this.props.clearDisplay()
-    this.props.changeMessageType()
+const Praise = (props: AppProps) => {
+  // componentDidMount() {
+  //   this.props.clearDisplay()
+  //   this.props.changeMessageType()
+  // }
+
+  if (props.loading) {
+    return <LoadingSpinner />
   }
 
-  render() {
-    if (this.props.loading) {
-      return <LoadingSpinner />
-    }
-    return (
-      <SubmissionForm
-        displayMessage={this.props.displayMessage}
-        formType={PrayerPraise.PRAISE}
-        // loggedIn={this.props.loggedIn}
-        messageText={this.props.messageText}
-        sharedStatus={this.props.sharedStatus}
-        handleChangeMessageText={(text: string) =>
-          this.props.changeMessageText(text)
-        }
-        handleChangeShareStatus={(status: ShareStatus) =>
-          this.props.changeSharedStatus(status)
-        }
-        handleSubmit={() => this.props.submitMessage()}
-      />
-    )
-  }
+  return (
+    <SubmissionForm
+      displayMessage={props.displayMessage}
+      formType={PrayerPraise.PRAISE}
+      // loggedIn={props.loggedIn}
+      messageText={props.messageText}
+      sharedStatus={props.sharedStatus}
+      handleChangeMessageText={(text: string) => props.changeMessageText(text)}
+      handleChangeShareStatus={(status: ShareStatus) =>
+        props.changeSharedStatus(status)
+      }
+      handleSubmit={() => props.submitMessage()}
+    />
+  )
 }
 
 export default withLayout(connect(mapStateToProps, mapDispatchToProps)(Praise))

@@ -52,35 +52,32 @@ function mapDispatchToProps(dispatch: Dispatch): DispatchProps {
   }
 }
 
-type IAppProps = StateProps & DispatchProps
+type AppProps = StateProps & DispatchProps
 
-export class Prayer extends React.Component<IAppProps, never> {
-  componentDidMount() {
-    this.props.clearDisplay()
-    this.props.changeMessageType()
+const Prayer = (props: AppProps) => {
+  // componentDidMount() {
+  //   this.props.clearDisplay()
+  //   this.props.changeMessageType()
+  // }
+
+  if (props.loading) {
+    return <LoadingSpinner />
   }
 
-  render() {
-    if (this.props.loading) {
-      return <LoadingSpinner />
-    }
-    return (
-      <SubmissionForm
-        displayMessage={this.props.displayMessage}
-        formType={PrayerPraise.PRAYER}
-        // loggedIn={this.props.loggedIn}
-        messageText={this.props.messageText}
-        sharedStatus={this.props.sharedStatus}
-        handleChangeMessageText={(text: string) =>
-          this.props.changeMessageText(text)
-        }
-        handleChangeShareStatus={(status: ShareStatus) =>
-          this.props.changeSharedStatus(status)
-        }
-        handleSubmit={() => this.props.submitMessage()}
-      />
-    )
-  }
+  return (
+    <SubmissionForm
+      displayMessage={props.displayMessage}
+      formType={PrayerPraise.PRAYER}
+      // loggedIn={props.loggedIn}
+      messageText={props.messageText}
+      sharedStatus={props.sharedStatus}
+      handleChangeMessageText={(text: string) => props.changeMessageText(text)}
+      handleChangeShareStatus={(status: ShareStatus) =>
+        props.changeSharedStatus(status)
+      }
+      handleSubmit={() => props.submitMessage()}
+    />
+  )
 }
 
 export default withLayout(connect(mapStateToProps, mapDispatchToProps)(Prayer))

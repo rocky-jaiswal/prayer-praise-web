@@ -20,7 +20,11 @@ ReactDOM.render(
       <Auth0Provider
         domain={process.env.REACT_APP_AUTH0_DOMAIN || 'example.com'}
         clientId={process.env.REACT_APP_AUTH0_CLIENT_ID || 'changeme'}
-        redirectUri={`http://localhost:3000/authCallback`}
+        redirectUri={
+          process.env.REACT_APP_AUTH0_REDIRECT_URI ||
+          `http://localhost:3000/authCallback`
+        }
+        audience={process.env.REACT_APP_AUTH0_AUDIENCE}
       >
         <React.StrictMode>
           <App />

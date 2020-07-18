@@ -61,41 +61,40 @@ function mapDispatchToProps(dispatch: Dispatch): DispatchProps {
 
 type AppProps = StateProps & DispatchProps
 
-export class Me extends React.Component<AppProps, never> {
+const Me = (props: AppProps) => {
   // componentDidMount() {
-  //   this.props.fetchMyMessages()
+  //   props.fetchMyMessages()
   // }
 
   // componentWillReceiveProps(nextProps: StateProps) {
   //   if (!nextProps.loggedIn) {
-  //     this.props.changeRoute('/')
+  //     props.changeRoute('/')
   //   }
   // }
 
-  render() {
-    if (this.props.loading || !this.props.messages) {
-      return <LoadingSpinner />
-    }
-    return (
-      <div className="container">
-        <h2>
-          <FormattedMessage id="container.Me.heading" />
-          {this.props.isAdmin ? ' (Admin*)' : ''}
-        </h2>
-        <MyMessages
-          messages={this.props.messages}
-          setMessageToView={this.props.setMessageToView}
-          unsetMessageToView={this.props.unsetMessageToView}
-          selectedMessageId={this.props.selectedMessageId}
-          deleteMessage={this.props.deleteMessage}
-          editMessage={(id: number, path: string) => {
-            this.props.setMessageToEdit(id)
-            this.props.changeRoute(path)
-          }}
-        />
-      </div>
-    )
+  if (props.loading || !props.messages) {
+    return <LoadingSpinner />
   }
+
+  return (
+    <div className="container">
+      <h2>
+        <FormattedMessage id="container.Me.heading" />
+        {props.isAdmin ? ' (Admin*)' : ''}
+      </h2>
+      <MyMessages
+        messages={props.messages}
+        setMessageToView={props.setMessageToView}
+        unsetMessageToView={props.unsetMessageToView}
+        selectedMessageId={props.selectedMessageId}
+        deleteMessage={props.deleteMessage}
+        editMessage={(id: number, path: string) => {
+          props.setMessageToEdit(id)
+          props.changeRoute(path)
+        }}
+      />
+    </div>
+  )
 }
 
 export default withLayout(connect(mapStateToProps, mapDispatchToProps)(Me))

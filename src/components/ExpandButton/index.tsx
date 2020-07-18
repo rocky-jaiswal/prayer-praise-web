@@ -7,7 +7,7 @@ interface Props {
   toggleSidebar(): ActionType<void>
 }
 
-const ExpandButton: React.SFC<Props> = (props) => {
+const ExpandButton = (props: Props) => {
   return (
     <div className={'toggleButton'} onClick={() => props.toggleSidebar()}>
       <div className={'wrapper'}>

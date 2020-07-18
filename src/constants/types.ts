@@ -19,10 +19,7 @@ interface Auth0 {
 export type Auth0Params = Auth0
 
 interface AppState {
-  // accessToken?: string | null
-  // auth0: Auth0
-  // idToken?: string | null
-  // jwtToken?: string | null
+  jwtToken?: string | null
   error?: string | null
   locale: LocaleEnum
   profilePic?: string | null

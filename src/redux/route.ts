@@ -9,7 +9,6 @@ const istate = {
 
 export const initialState = Immutable.from(istate)
 
-// tslint:disable-next-line:no-any
 export function routeReducer(
   state: any = initialState,
   action: ActionType<any>

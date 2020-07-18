@@ -12,7 +12,6 @@ import {
   USER_PROFILE_LOADED,
 } from './constants'
 
-// tslint:disable-next-line:no-any
 export function login(payload: any) {
   return {
     payload,

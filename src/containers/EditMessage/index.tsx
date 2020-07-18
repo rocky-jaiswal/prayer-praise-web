@@ -35,7 +35,7 @@ interface DispatchProps {
   updateMessage(): ActionType<void>
 }
 
-type IAppProps = StateProps & RouteComponentProps<RouteParams> & DispatchProps
+type AppProps = StateProps & RouteComponentProps<RouteParams> & DispatchProps
 
 function mapStateToProps(state: RootStateType): StateProps {
   return {
@@ -60,36 +60,35 @@ function mapDispatchToProps(dispatch: Dispatch): DispatchProps {
   }
 }
 
-export class EditMessage extends React.Component<IAppProps, never> {
-  componentDidMount() {
-    this.props.editMessage(
-      this.props.messageForEditId || this.props.match.params.id
-    )
+const EditMessage = (props: AppProps) => {
+  // componentDidMount() {
+  //   props.editMessage(
+  //     props.messageForEditId || props.match.params.id
+  //   )
+  // }
+
+  if (props.loading || !props.messageForEditId) {
+    return <LoadingSpinner />
   }
 
-  render() {
-    if (this.props.loading || !this.props.messageForEditId) {
-      return <LoadingSpinner />
-    }
-    return (
-      <div className="container">
-        <SubmissionForm
-          displayMessage={this.props.displayMessage}
-          formType={this.props.messageForEditType}
-          // loggedIn={true}
-          messageText={this.props.messageForEditText}
-          sharedStatus={this.props.messageForEditSharedStatus}
-          handleChangeMessageText={(text: string) =>
-            this.props.changeMessageText(text)
-          }
-          handleChangeShareStatus={(status: ShareStatus) =>
-            this.props.changeSharedStatus(status)
-          }
-          handleSubmit={() => this.props.updateMessage()}
-        />
-      </div>
-    )
-  }
+  return (
+    <div className="container">
+      <SubmissionForm
+        displayMessage={props.displayMessage}
+        formType={props.messageForEditType}
+        // loggedIn={true}
+        messageText={props.messageForEditText}
+        sharedStatus={props.messageForEditSharedStatus}
+        handleChangeMessageText={(text: string) =>
+          props.changeMessageText(text)
+        }
+        handleChangeShareStatus={(status: ShareStatus) =>
+          props.changeSharedStatus(status)
+        }
+        handleSubmit={() => props.updateMessage()}
+      />
+    </div>
+  )
 }
 
 export default withLayout(

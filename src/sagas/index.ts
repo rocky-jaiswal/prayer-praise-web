@@ -1,6 +1,6 @@
 import { fetchUserProfileWatcher } from './fetchUserProfile'
 
-import { tokenDataWatcher } from './tokenData'
+import { loginWatcher } from './login'
 
 import { createMessageWatcher } from './createMessages'
 
@@ -16,7 +16,7 @@ import { updateMessageWatcher } from './updateMessage'
 
 export default [
   fetchUserProfileWatcher,
-  tokenDataWatcher,
+  loginWatcher,
   createMessageWatcher,
   fetchMyMessagesWatcher,
   sharedMessagesWatcher,

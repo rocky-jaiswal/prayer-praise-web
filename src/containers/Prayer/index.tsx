@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { useEffect } from 'react'
 import { connect } from 'react-redux'
 
 import LoadingSpinner from '../../components/LoadingSpinner'
@@ -52,13 +53,11 @@ function mapDispatchToProps(dispatch: Dispatch): DispatchProps {
   }
 }
 
-type AppProps = StateProps & DispatchProps
-
-const Prayer = (props: AppProps) => {
-  // componentDidMount() {
-  //   this.props.clearDisplay()
-  //   this.props.changeMessageType()
-  // }
+const Prayer = (props: StateProps & DispatchProps) => {
+  useEffect(() => {
+    props.clearDisplay()
+    props.changeMessageType()
+  }, [])
 
   if (props.loading) {
     return <LoadingSpinner />

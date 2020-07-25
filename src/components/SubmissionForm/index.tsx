@@ -1,5 +1,5 @@
 import * as React from 'react'
-import * as ContentEditable from 'react-contenteditable'
+import ContentEditable from 'react-contenteditable'
 import { FormattedMessage } from 'react-intl'
 
 import { ActionType } from '../../constants/types'
@@ -20,8 +20,8 @@ interface Props {
   handleSubmit(): ActionType<void>
 }
 
-class SubmissionForm extends React.PureComponent<Props> {
-  getMessage(formType: PrayerPraise) {
+const SubmissionForm = (props: Props) => {
+  const getMessage = (formType: PrayerPraise) => {
     return {
       [PrayerPraise.PRAISE]: (
         <FormattedMessage id="component.FormHeading.Praise" />
@@ -32,57 +32,51 @@ class SubmissionForm extends React.PureComponent<Props> {
     }[formType]
   }
 
-  // tslint:disable-next-line:no-any
-  submitMessage(e: any) {
+  const submitMessage = (e: any) => {
     e.preventDefault()
-    if (this.props.messageText && this.props.messageText.trim().length !== 0) {
-      this.props.handleSubmit()
+    if (props.messageText && props.messageText.trim().length !== 0) {
+      props.handleSubmit()
     }
   }
 
-  render() {
-    return (
-      <div className="formContainer">
-        <h2>{this.getMessage(this.props.formType)}</h2>
-        <div className={'info'}>
-          {`${cleanString(this.props.messageText).length} / 500`}
-          <FormattedMessage id="component.form.characters" />
-        </div>
-        <DisplayMessage message={this.props.displayMessage} />
-        <ContentEditable
-          className={'contentHolder'}
-          // tslint:disable-next-line:no-any
-          onChange={(evt: any) =>
-            this.props.handleChangeMessageText(evt.target.value)
-          }
-          html={this.props.messageText}
-          disabled={false}
-        />
-        <SelectBar
-          // loggedIn={this.props.loggedIn}
-          sharedStatus={this.props.sharedStatus}
-          handleChangeShareStatus={(status: ShareStatus) =>
-            this.props.handleChangeShareStatus(status)
-          }
-        />
-        <button
-          disabled={
-            cleanString(this.props.messageText).trim().length === 0 ||
-            cleanString(this.props.messageText).length > 500
-          }
-          className={
-            cleanString(this.props.messageText).trim().length === 0 ||
-            cleanString(this.props.messageText).length > 500
-              ? 'disabledButton'
-              : 'submitButton'
-          }
-          onClick={(e) => this.submitMessage(e)}
-        >
-          <FormattedMessage id="actions.submit" />
-        </button>
+  return (
+    <div className="formContainer">
+      <h2>{getMessage(props.formType)}</h2>
+      <div className={'info'}>
+        {`${cleanString(props.messageText).length} / 500`}
+        <FormattedMessage id="component.form.characters" />
       </div>
-    )
-  }
+      <DisplayMessage message={props.displayMessage} />
+      <ContentEditable
+        className="contentHolder"
+        onChange={(evt: any) => props.handleChangeMessageText(evt.target.value)}
+        html={props.messageText}
+        disabled={false}
+      />
+      <SelectBar
+        // loggedIn={props.loggedIn}
+        sharedStatus={props.sharedStatus}
+        handleChangeShareStatus={(status: ShareStatus) =>
+          props.handleChangeShareStatus(status)
+        }
+      />
+      <button
+        disabled={
+          cleanString(props.messageText).trim().length === 0 ||
+          cleanString(props.messageText).length > 500
+        }
+        className={
+          cleanString(props.messageText).trim().length === 0 ||
+          cleanString(props.messageText).length > 500
+            ? 'disabledButton'
+            : 'submitButton'
+        }
+        onClick={(e) => submitMessage(e)}
+      >
+        <FormattedMessage id="actions.submit" />
+      </button>
+    </div>
+  )
 }
 
 export default SubmissionForm

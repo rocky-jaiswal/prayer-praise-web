@@ -7,7 +7,7 @@ interface Props {
   message: SharedMessageType
 }
 
-const MessageSummary: React.SFC<Props> = (props) => {
+const MessageSummary = (props: Props) => {
   return (
     <div className="messageText">
       {props.message.messageText.replace(/<[^>]*>/gi, ' ').substr(0, 20)}...

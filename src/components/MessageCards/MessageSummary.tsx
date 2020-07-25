@@ -10,7 +10,7 @@ interface Props {
   expand(id?: number): ActionType<number>
 }
 
-const MessageSummary: React.SFC<Props> = (props) => {
+const MessageSummary = (props: Props) => {
   return (
     <div className={'message'} onClick={() => props.expand(props.message.id)}>
       <Badge messageType={props.message.messageType} />

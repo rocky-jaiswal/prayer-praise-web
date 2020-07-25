@@ -9,7 +9,7 @@ interface Props {
   messageType: PrayerPraise
 }
 
-const Badge: React.SFC<Props> = (props) => {
+const Badge = (props: Props) => {
   if (props.messageType === PrayerPraise.PRAISE) {
     return (
       <div className={'praiseBadge'}>

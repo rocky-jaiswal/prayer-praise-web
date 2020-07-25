@@ -11,31 +11,29 @@ interface Props {
   expand(id?: number): ActionType<number>
 }
 
-class MessageCards extends React.PureComponent<Props> {
-  render() {
-    return (
-      <div className="messages">
-        {this.props.sharedMessages.map((message) => {
-          if (message.id === this.props.expandedMessage) {
-            return (
-              <ExpandedMessage
-                message={message}
-                expand={this.props.expand}
-                key={message.id}
-              />
-            )
-          }
+const MessageCards = (props: Props) => {
+  return (
+    <div className="messages">
+      {props.sharedMessages.map((message) => {
+        if (message.id === props.expandedMessage) {
           return (
-            <MessageSummary
+            <ExpandedMessage
               message={message}
-              expand={this.props.expand}
+              expand={props.expand}
               key={message.id}
             />
           )
-        })}
-      </div>
-    )
-  }
+        }
+        return (
+          <MessageSummary
+            message={message}
+            expand={props.expand}
+            key={message.id}
+          />
+        )
+      })}
+    </div>
+  )
 }
 
 export default MessageCards

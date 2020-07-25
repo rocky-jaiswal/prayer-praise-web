@@ -16,76 +16,72 @@ interface Props {
   editMessage(id: number, payload: string): void
 }
 
-class MyMessages extends React.PureComponent<Props> {
-  showSummaryOrFullMessage(message: SharedMessageType) {
-    if (this.props.selectedMessageId === message.id) {
+const MyMessages = (props: Props) => {
+  const showSummaryOrFullMessage = (message: SharedMessageType) => {
+    if (props.selectedMessageId === message.id) {
       return <FullMessage message={message} />
     }
     return <MessageSummary message={message} />
   }
 
-  render() {
-    return (
-      <div className="user-messages">
-        {this.props.messages.map((message) => {
-          return (
-            <div
-              className={
-                this.props.selectedMessageId === message.id
-                  ? 'fullMessage'
-                  : 'message'
-              }
-              key={message.id}
-            >
-              {this.showSummaryOrFullMessage(message)}
-              <div className="messageActions">
-                <span className="shared-status">{message.sharedStatus}</span>
-                <span>
-                  <button
-                    className={'viewButton'}
-                    onClick={
-                      this.props.selectedMessageId === message.id
-                        ? () => this.props.unsetMessageToView()
-                        : () => this.props.setMessageToView(message.id)
+  return (
+    <div className="user-messages">
+      {props.messages.map((message) => {
+        return (
+          <div
+            className={
+              props.selectedMessageId === message.id ? 'fullMessage' : 'message'
+            }
+            key={message.id}
+          >
+            {showSummaryOrFullMessage(message)}
+            <div className="messageActions">
+              <span className="shared-status">{message.sharedStatus}</span>
+              <span>
+                <button
+                  className={'viewButton'}
+                  onClick={
+                    props.selectedMessageId === message.id
+                      ? () => props.unsetMessageToView()
+                      : () => props.setMessageToView(message.id)
+                  }
+                >
+                  <FormattedMessage
+                    id={
+                      props.selectedMessageId === message.id
+                        ? 'actions.collapse'
+                        : 'actions.view'
                     }
-                  >
-                    <FormattedMessage
-                      id={
-                        this.props.selectedMessageId === message.id
-                          ? 'actions.collapse'
-                          : 'actions.view'
-                      }
-                    />
-                  </button>
-                </span>
-                <span>
-                  <button
-                    className={'editButton'}
-                    onClick={() =>
-                      this.props.editMessage(
-                        message.id,
-                        `/edit/messages/${message.id}`
-                      )
-                    }
-                  >
-                    <FormattedMessage id="actions.edit" />
-                  </button>
-                </span>
-                <span>
-                  <button
-                    className={'deleteButton'}
-                    onClick={() => this.props.deleteMessage(message.id)}
-                  >
-                    <FormattedMessage id="actions.delete" />
-                  </button>
-                </span>
-              </div>
+                  />
+                </button>
+              </span>
+              <span>
+                <button
+                  className={'editButton'}
+                  onClick={() =>
+                    props.editMessage(
+                      message.id,
+                      `/edit/messages/${message.id}`
+                    )
+                  }
+                >
+                  <FormattedMessage id="actions.edit" />
+                </button>
+              </span>
+              <span>
+                <button
+                  className={'deleteButton'}
+                  onClick={() => props.deleteMessage(message.id)}
+                >
+                  <FormattedMessage id="actions.delete" />
+                </button>
+              </span>
             </div>
-          )
-        })}
-      </div>
-    )
-  }
+          </div>
+        )
+      })}
+    </div>
+  )
 }
 
 export default MyMessages

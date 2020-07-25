@@ -7,7 +7,7 @@ interface Props {
   message: SharedMessageType
 }
 
-const FullMessage: React.SFC<Props> = (props) => {
+const FullMessage = (props: Props) => {
   return (
     <div className="expandedMessageText">
       {props.message.messageText}

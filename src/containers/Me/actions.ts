@@ -34,7 +34,6 @@ export function fetchMyMessagesInProgress() {
   }
 }
 
-// tslint:disable-next-line:no-any
 export function fetchMyMessagesSuccessful(payload: any) {
   return {
     payload,
@@ -61,7 +60,6 @@ export function deleteMessageInProgress() {
   }
 }
 
-// tslint:disable-next-line:no-any
 export function deleteMessageSuccessful(payload: any) {
   return {
     payload,

@@ -16,7 +16,6 @@ function* editMessage(action: ActionType<number>) {
     const result = yield call(AppAPI.editMessage, action.payload as number)
     yield put(editMessageSuccessful(result.data))
   } catch (err) {
-    // tslint:disable-next-line:no-console
     console.error(err)
     yield put(editMessageFailed())
   }

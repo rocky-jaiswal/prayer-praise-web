@@ -4,15 +4,19 @@ import { useAuth0 } from '@auth0/auth0-react'
 
 import './styles.css'
 
-interface Props {}
+interface Props {
+  username?: string
+  profilePic?: string
+}
 
-const User = (_props: Props) => {
+const User = (props: Props) => {
   const { loginWithRedirect } = useAuth0()
 
   const displayLoggedInUser = () => {
     return (
       <div className="userProfile">
-        {/* <img src={this.props.profilePic} alt={this.props.username} /> */}
+        <img src={props.profilePic} alt={props.username} />
+        {/* TODO */}
         <button onClick={() => ({})}>
           <FormattedMessage id="actions.logout" />
         </button>
@@ -30,7 +34,7 @@ const User = (_props: Props) => {
     )
   }
 
-  const isLoggedIn = false
+  const isLoggedIn = props.username && props.profilePic
   return isLoggedIn ? displayLoggedInUser() : displayLoggedOutUser()
 }
 

@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { RouteComponentProps } from 'react-router'
 
@@ -61,13 +62,11 @@ function mapDispatchToProps(dispatch: Dispatch): DispatchProps {
 }
 
 const EditMessage = (props: AppProps) => {
-  // componentDidMount() {
-  //   props.editMessage(
-  //     props.messageForEditId || props.match.params.id
-  //   )
-  // }
+  useEffect(() => {
+    props.editMessage(props.messageForEditId || props.match.params.id)
+  }, [])
 
-  if (props.loading || !props.messageForEditId) {
+  if (props.loading || !props.messageForEditId || !props.messageForEditText) {
     return <LoadingSpinner />
   }
 

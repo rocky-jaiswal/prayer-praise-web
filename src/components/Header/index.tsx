@@ -7,6 +7,8 @@ import User from '../User'
 import './styles.css'
 
 interface Props {
+  username?: string
+  profilePic?: string
   switchLanguage(payload: 'en' | 'de'): ActionType<string>
 }
 
@@ -31,7 +33,7 @@ const Header = (props: Props) => {
         >
           DE
         </button>
-        <User />
+        <User username={props.username} profilePic={props.profilePic} />
       </div>
     </div>
   )

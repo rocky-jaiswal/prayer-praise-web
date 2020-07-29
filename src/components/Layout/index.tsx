@@ -9,6 +9,8 @@ import Sidebar from '../Sidebar'
 import './styles.css'
 
 interface Props {
+  username?: string
+  profilePic?: string
   children?: React.ReactElement<{}>
   sidebarVisible: boolean
   switchLanguage(payload: string): ActionType<string>
@@ -18,9 +20,16 @@ interface Props {
 const Layout = (props: Props) => {
   return (
     <div className="main-container">
-      <Header switchLanguage={props.switchLanguage} />
+      <Header
+        switchLanguage={props.switchLanguage}
+        username={props.username}
+        profilePic={props.profilePic}
+      />
       <div className="page">
-        <Sidebar loggedIn={false} sidebarVisible={props.sidebarVisible} />
+        <Sidebar
+          loggedIn={!!props.username && !!props.profilePic}
+          sidebarVisible={props.sidebarVisible}
+        />
         <div className="main">{props.children}</div>
         <ExpandButton toggleSidebar={props.toggleSidebar} />
       </div>

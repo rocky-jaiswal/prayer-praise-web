@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { useEffect } from 'react'
 import { FormattedMessage } from 'react-intl'
 import { connect } from 'react-redux'
 import { push, RouterAction } from 'connected-react-router'
@@ -62,9 +63,9 @@ function mapDispatchToProps(dispatch: Dispatch): DispatchProps {
 type AppProps = StateProps & DispatchProps
 
 const Me = (props: AppProps) => {
-  // componentDidMount() {
-  //   props.fetchMyMessages()
-  // }
+  useEffect(() => {
+    props.fetchMyMessages()
+  }, [])
 
   // componentWillReceiveProps(nextProps: StateProps) {
   //   if (!nextProps.loggedIn) {

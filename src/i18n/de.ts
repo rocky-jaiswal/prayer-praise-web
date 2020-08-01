@@ -1,6 +1,6 @@
 export default {
-  'container.Me.heading' : 'Mein Profil',
-  'container.Root.heading' : 'Willkommen',
+  'container.Me.heading': 'Mein Profil',
+  'container.Root.heading': 'Willkommen',
   // tslint:disable-next-line:object-literal-sort-keys
   'components.Header.main': 'BICC - Gebetsanliegen und Lob',
   'components.Footer.main': '❤ Berlin Church 2018',
@@ -24,7 +24,9 @@ export default {
   'component.FormHeading.Prayer': 'Gebetsanliegen',
   'component.FormHeading.Praise': 'Lob',
   'component.form.characters': ' chars',
-  'message.success': 'Vielen Dank! Die Nachricht wurde erfolgreich gespeichert.',
+  'message.success':
+    'Vielen Dank! Die Nachricht wurde erfolgreich gespeichert.',
+  'message.deleted': 'The message was deleted successfully.',
   'message.failure': 'Fehler! Bitte erfrischen und später versuchen.',
-  'message.blank': ' '
-};
+  'message.blank': ' ',
+}

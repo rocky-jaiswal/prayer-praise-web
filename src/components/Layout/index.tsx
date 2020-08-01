@@ -13,8 +13,10 @@ interface Props {
   profilePic?: string
   children?: React.ReactElement<{}>
   sidebarVisible: boolean
+  loggedIn: boolean
   switchLanguage(payload: string): ActionType<string>
   toggleSidebar(): ActionType<void>
+  logout(): ActionType<void>
 }
 
 const Layout = (props: Props) => {
@@ -22,12 +24,14 @@ const Layout = (props: Props) => {
     <div className="main-container">
       <Header
         switchLanguage={props.switchLanguage}
+        loggedIn={props.loggedIn}
         username={props.username}
         profilePic={props.profilePic}
+        logout={props.logout}
       />
       <div className="page">
         <Sidebar
-          loggedIn={!!props.username && !!props.profilePic}
+          loggedIn={props.loggedIn}
           sidebarVisible={props.sidebarVisible}
         />
         <div className="main">{props.children}</div>

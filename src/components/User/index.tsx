@@ -2,11 +2,14 @@ import * as React from 'react'
 import { FormattedMessage } from 'react-intl'
 import { useAuth0 } from '@auth0/auth0-react'
 
+import { ActionType } from '../../constants/types'
 import './styles.css'
 
 interface Props {
+  loggedIn: boolean
   username?: string
   profilePic?: string
+  logout(): ActionType<void>
 }
 
 const User = (props: Props) => {
@@ -16,8 +19,7 @@ const User = (props: Props) => {
     return (
       <div className="userProfile">
         <img src={props.profilePic} alt={props.username} />
-        {/* TODO */}
-        <button onClick={() => ({})}>
+        <button onClick={() => props.logout()}>
           <FormattedMessage id="actions.logout" />
         </button>
       </div>
@@ -34,8 +36,7 @@ const User = (props: Props) => {
     )
   }
 
-  const isLoggedIn = props.username && props.profilePic
-  return isLoggedIn ? displayLoggedInUser() : displayLoggedOutUser()
+  return props.loggedIn ? displayLoggedInUser() : displayLoggedOutUser()
 }
 
 export default User

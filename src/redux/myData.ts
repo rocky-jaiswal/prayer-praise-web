@@ -37,7 +37,6 @@ const istate: MyDataType = {
 
 export const initialState = Immutable.from(istate)
 
-// tslint:disable-next-line:no-any
 export function myDataReducer(
   state: any = initialState,
   action: ActionType<any>
@@ -65,7 +64,7 @@ export function myDataReducer(
       return state
         .set('loading', false)
         .set('myMessages', action.payload)
-        .set('displayMessage', undefined)
+        .set('displayMessage', 'message.deleted')
 
     case DELETE_MESSAGE_FAILED:
       return state

@@ -10,6 +10,7 @@ import {
   TOKEN_LOADED,
   USER_PROFILE_LOAD_ERROR,
   USER_PROFILE_LOADED,
+  LOGOUT_SUCCESS,
 } from './constants'
 
 export function login(payload: any) {
@@ -22,6 +23,12 @@ export function login(payload: any) {
 export function logout() {
   return {
     type: LOGOUT,
+  }
+}
+
+export function logoutSuccess() {
+  return {
+    type: LOGOUT_SUCCESS,
   }
 }
 

@@ -5,16 +5,16 @@ import { ShareStatus } from '../../constants/enums'
 import './styles.css'
 
 interface Props {
-  // loggedIn: boolean
+  loggedIn: boolean
   sharedStatus?: ShareStatus
   handleChangeShareStatus(status: ShareStatus): void
 }
 
 const SelectBar = (props: Props) => {
   const determineClass = () => {
-    // if (!props.loggedIn) {
-    //   return 'hidden'
-    // }
+    if (!props.loggedIn) {
+      return 'hidden'
+    }
     return props.sharedStatus === ShareStatus.SHARED_WITH_NOONE
       ? 'selected'
       : 'unselected'

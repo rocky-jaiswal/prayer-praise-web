@@ -24,7 +24,6 @@ interface AppState {
   locale: LocaleEnum
   profilePic?: string | null
   sidebarVisible: boolean
-  tokenExpiresAt?: number
   username?: string
   admin: boolean
 }

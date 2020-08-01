@@ -20,12 +20,14 @@ import {
   setMessageToView,
   unsetMessageToView,
 } from './actions'
+import { isLoggedIn } from '../App/selectors'
 import './styles.css'
 
 interface StateProps {
   loading: boolean
-  // loggedIn: boolean
+  loggedIn: boolean
   isAdmin: boolean
+  displayMessage?: string
   selectedMessageId: number | null
   messages: SharedMessageType[]
 }
@@ -42,8 +44,9 @@ interface DispatchProps {
 function mapStateToProps(state: RootStateType): StateProps {
   return {
     loading: state.myData.loading,
-    // loggedIn: !!state.app.jwtToken,
+    loggedIn: isLoggedIn(state.app),
     isAdmin: state.app.admin,
+    displayMessage: state.myData.displayMessage,
     selectedMessageId: state.myData.selectedMessageId,
     messages: state.myData.myMessages.asMutable(),
   }
@@ -84,6 +87,7 @@ const Me = (props: AppProps) => {
         {props.isAdmin ? ' (Admin*)' : ''}
       </h2>
       <MyMessages
+        displayMessage={props.displayMessage}
         messages={props.messages}
         setMessageToView={props.setMessageToView}
         unsetMessageToView={props.unsetMessageToView}

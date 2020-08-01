@@ -9,7 +9,9 @@ import './styles.css'
 interface Props {
   username?: string
   profilePic?: string
+  loggedIn: boolean
   switchLanguage(payload: 'en' | 'de'): ActionType<string>
+  logout(): ActionType<void>
 }
 
 const Header = (props: Props) => {
@@ -33,7 +35,12 @@ const Header = (props: Props) => {
         >
           DE
         </button>
-        <User username={props.username} profilePic={props.profilePic} />
+        <User
+          username={props.username}
+          profilePic={props.profilePic}
+          loggedIn={props.loggedIn}
+          logout={props.logout}
+        />
       </div>
     </div>
   )

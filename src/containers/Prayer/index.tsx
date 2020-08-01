@@ -14,11 +14,12 @@ import {
   clearDisplay,
   submitMessage,
 } from '../Praise/actions'
+import { isLoggedIn } from '../App/selectors'
 
 interface StateProps {
   displayMessage?: string
   loading: boolean
-  // loggedIn: boolean
+  loggedIn: boolean
   messageText: string
   sharedStatus: ShareStatus
 }
@@ -35,7 +36,7 @@ function mapStateToProps(state: RootStateType): StateProps {
   return {
     displayMessage: state.messages.displayMessage,
     loading: state.messages.loading,
-    // loggedIn: !!state.app.jwtToken && !!state.app.username,
+    loggedIn: isLoggedIn(state.app),
     messageText: state.messages.messageText,
     sharedStatus: state.messages.sharedStatus,
   }
@@ -67,7 +68,7 @@ const Prayer = (props: StateProps & DispatchProps) => {
     <SubmissionForm
       displayMessage={props.displayMessage}
       formType={PrayerPraise.PRAYER}
-      // loggedIn={props.loggedIn}
+      loggedIn={props.loggedIn}
       messageText={props.messageText}
       sharedStatus={props.sharedStatus}
       handleChangeMessageText={(text: string) => props.changeMessageText(text)}

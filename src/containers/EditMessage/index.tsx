@@ -14,6 +14,7 @@ import {
   editMessage,
   updateMessage,
 } from '../Me/actions'
+import { isLoggedIn } from '../App/selectors'
 import '../Me/styles.css'
 
 interface StateProps {
@@ -23,6 +24,7 @@ interface StateProps {
   messageForEditSharedStatus?: ShareStatus
   messageForEditText?: string
   loading: boolean
+  loggedIn: boolean
 }
 
 interface RouteParams {
@@ -47,6 +49,7 @@ function mapStateToProps(state: RootStateType): StateProps {
     messageForEditText: state.myData.messageForEdit.text,
     messageForEditType:
       state.myData.messageForEdit.messageType || PrayerPraise.PRAISE,
+    loggedIn: isLoggedIn(state.app),
   }
 }
 
@@ -75,7 +78,7 @@ const EditMessage = (props: AppProps) => {
       <SubmissionForm
         displayMessage={props.displayMessage}
         formType={props.messageForEditType}
-        // loggedIn={true}
+        loggedIn={props.loggedIn}
         messageText={props.messageForEditText}
         sharedStatus={props.messageForEditSharedStatus}
         handleChangeMessageText={(text: string) =>

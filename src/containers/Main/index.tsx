@@ -10,7 +10,9 @@ import {
   switchLanguage,
   toggleSidebar,
   fetchUserProfile,
+  logout,
 } from '../App/actions'
+import { isLoggedIn } from '../App/selectors'
 
 import './styles.css'
 
@@ -19,6 +21,7 @@ interface StateProps {
   username?: string
   profilePic?: string
   sidebarVisible: boolean
+  loggedIn: boolean
   children: any
   match: any
 }
@@ -28,6 +31,7 @@ interface DispatchProps {
   resetSidebar(): ActionType<void>
   toggleSidebar(): ActionType<void>
   fetchUserProfile(): ActionType<void>
+  logout(): ActionType<void>
 }
 
 function mapStateToProps(state: RootStateType, ownProps: any): StateProps {
@@ -36,6 +40,7 @@ function mapStateToProps(state: RootStateType, ownProps: any): StateProps {
     username: state.app.username,
     profilePic: state.app.profilePic,
     sidebarVisible: state.app.sidebarVisible,
+    loggedIn: isLoggedIn(state.app),
     ...ownProps,
   }
 }
@@ -46,6 +51,7 @@ function mapDispatchToProps(dispatch: Dispatch): DispatchProps {
     switchLanguage: (payload: string) => dispatch(switchLanguage(payload)),
     toggleSidebar: () => dispatch(toggleSidebar()),
     fetchUserProfile: () => dispatch(fetchUserProfile()),
+    logout: () => dispatch(logout()),
   }
 }
 
@@ -66,6 +72,8 @@ export const withLayout = (
         sidebarVisible={props.sidebarVisible}
         switchLanguage={props.switchLanguage}
         toggleSidebar={props.toggleSidebar}
+        loggedIn={props.loggedIn}
+        logout={props.logout}
       >
         <WrappedComponent match={props.match} />
       </Layout>

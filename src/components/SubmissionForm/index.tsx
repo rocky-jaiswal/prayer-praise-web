@@ -12,7 +12,7 @@ import './styles.css'
 interface Props {
   formType: PrayerPraise
   displayMessage?: string
-  // loggedIn: boolean
+  loggedIn: boolean
   messageText?: string
   sharedStatus?: ShareStatus
   handleChangeMessageText(text: string): void
@@ -54,7 +54,7 @@ const SubmissionForm = (props: Props) => {
         disabled={false}
       />
       <SelectBar
-        // loggedIn={props.loggedIn}
+        loggedIn={props.loggedIn}
         sharedStatus={props.sharedStatus}
         handleChangeShareStatus={(status: ShareStatus) =>
           props.handleChangeShareStatus(status)

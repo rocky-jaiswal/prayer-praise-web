@@ -3,6 +3,7 @@ import { FormattedMessage } from 'react-intl'
 
 import MessageSummary from './MessageSummary'
 import FullMessage from './FullMessage'
+import DisplayMessage from '../DisplayMessage'
 
 import { SharedMessageType, ActionType } from '../../constants/types'
 import './styles.css'
@@ -10,6 +11,7 @@ import './styles.css'
 interface Props {
   messages: SharedMessageType[]
   selectedMessageId: number | null
+  displayMessage?: string
   deleteMessage(payload: number): ActionType<number>
   unsetMessageToView(): ActionType<void>
   setMessageToView(id: number): ActionType<number>
@@ -26,6 +28,7 @@ const MyMessages = (props: Props) => {
 
   return (
     <div className="user-messages">
+      <DisplayMessage message={props.displayMessage} />
       {props.messages.map((message) => {
         return (
           <div
@@ -36,6 +39,7 @@ const MyMessages = (props: Props) => {
           >
             {showSummaryOrFullMessage(message)}
             <div className="messageActions">
+              <span className="message-type">{message.messageType}</span>
               <span className="shared-status">{message.sharedStatus}</span>
               <span>
                 <button

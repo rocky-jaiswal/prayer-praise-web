@@ -16,7 +16,6 @@ function* deleteMessage(action: ActionType<number>) {
     const result = yield call(AppAPI.deleteMessage, action.payload as number)
     yield put(deleteMessageSuccessful(result.data))
   } catch (err) {
-    // tslint:disable-next-line:no-console
     console.error(err)
     yield put(deleteMessageFailed())
   }

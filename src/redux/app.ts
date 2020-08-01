@@ -1,7 +1,7 @@
 import * as Immutable from 'seamless-immutable'
 
 import {
-  LOGOUT,
+  LOGOUT_SUCCESS,
   RESET_SIDEBAR,
   SWITCH_LANGUAGE,
   TOGGLE_SIDEBAR,
@@ -19,7 +19,6 @@ export const istate: AppStateType = {
   locale: LocaleEnum.en,
   profilePic: null,
   sidebarVisible: true,
-  tokenExpiresAt: undefined,
   username: undefined,
   admin: false,
 }
@@ -28,8 +27,7 @@ export const initialState = Immutable.from(istate)
 
 export function appReducer(state: any = initialState, action: any) {
   switch (action.type) {
-    case LOGOUT:
-      sessionStorage.clear()
+    case LOGOUT_SUCCESS:
       return state.merge(initialState).set('jwtToken', null)
 
     case TOKEN_LOADED:

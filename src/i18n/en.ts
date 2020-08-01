@@ -1,6 +1,6 @@
 export default {
-  'container.Me.heading' : 'My data',
-  'container.Root.heading' : 'Welcome Church',
+  'container.Me.heading': 'My data',
+  'container.Root.heading': 'Welcome Church',
   // tslint:disable-next-line:object-literal-sort-keys
   'components.Header.main': 'BICC - Prayers and Praises',
   'components.Footer.main': '❤ Berlin Church 2018',
@@ -25,6 +25,7 @@ export default {
   'component.FormHeading.Praise': 'Praise',
   'component.form.characters': ' chars',
   'message.success': 'Thank you! The message was saved successfully.',
+  'message.deleted': 'The message was deleted successfully.',
   'message.failure': 'Save unsuccessful! Please refresh and try later.',
-  'message.blank': ' '
-};
+  'message.blank': ' ',
+}

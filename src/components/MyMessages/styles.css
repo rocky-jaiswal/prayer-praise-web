@@ -58,6 +58,13 @@
   border: 1px dashed var(--main-gray);
 }
 
+.message-type {
+  font-size: 0.8rem;
+  padding: 3px 3px 0 3px;
+  border-radius: var(--app-radius);
+  border: 1px solid var(--main-gray);
+}
+
 .viewButton {
   align-self: center;
   border: none;

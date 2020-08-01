@@ -4,7 +4,7 @@ import { FormattedMessage } from 'react-intl'
 import './styles.css'
 
 interface Props {
-  message?: string
+  message?: string | null
 }
 
 const DisplayMessage = (props: Props) => {

@@ -1,27 +1,27 @@
-import * as React from 'react';
-import { FormattedMessage } from 'react-intl';
+import * as React from 'react'
+import { FormattedMessage } from 'react-intl'
 
-import { PrayerPraise } from '../../constants/enums';
+import { PrayerPraise } from '../../constants/enums'
 
-import './styles.css';
+import './styles.css'
 
 interface Props {
-  messageType: PrayerPraise;
+  messageType: PrayerPraise
 }
 
-const Badge: React.SFC<Props> = (props) => {
+const Badge = (props: Props) => {
   if (props.messageType === PrayerPraise.PRAISE) {
     return (
       <div className={'praiseBadge'}>
         <FormattedMessage id="components.Badge.praise" />
       </div>
-    );
+    )
   }
   return (
     <div className={'prayerBadge'}>
       <FormattedMessage id="components.Badge.prayer" />
     </div>
-  );
-};
+  )
+}
 
-export default Badge;
+export default Badge

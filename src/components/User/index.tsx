@@ -1,44 +1,42 @@
-import * as React from 'react';
-import { FormattedMessage } from 'react-intl';
+import * as React from 'react'
+import { FormattedMessage } from 'react-intl'
+import { useAuth0 } from '@auth0/auth0-react'
 
-import buildAuth0 from '../../lib/auth0';
-import './styles.css';
+import { ActionType } from '../../constants/types'
+import './styles.css'
 
 interface Props {
-  username?: string;
-  profilePic?: string;
-  jwtToken?: string;
-  // tslint:disable-next-line:no-any
-  auth0: any;
-  logout(): void;
+  loggedIn: boolean
+  username?: string
+  profilePic?: string
+  logout(): ActionType<void>
 }
 
-class User extends React.PureComponent<Props> {
+const User = (props: Props) => {
+  const { loginWithRedirect } = useAuth0()
 
-  displayLoggedInUser() {
+  const displayLoggedInUser = () => {
     return (
       <div className="userProfile">
-        <img src={this.props.profilePic} alt={this.props.username} />
-        <button onClick={this.props.logout}><FormattedMessage id="actions.logout" /></button>
+        <img src={props.profilePic} alt={props.username} />
+        <button onClick={() => props.logout()}>
+          <FormattedMessage id="actions.logout" />
+        </button>
       </div>
-    );
+    )
   }
 
-  displayLoggedOutUser() {
+  const displayLoggedOutUser = () => {
     return (
       <div className="userProfile">
-        <button onClick={() => buildAuth0(this.props.auth0).authorize()}>
+        <button onClick={() => loginWithRedirect()}>
           <FormattedMessage id="actions.login" />
         </button>
       </div>
-    );
+    )
   }
 
-  render() {
-    const isLoggedIn = this.props.jwtToken && this.props.username && this.props.profilePic;
-    return isLoggedIn ? this.displayLoggedInUser() : this.displayLoggedOutUser();
-  }
-
+  return props.loggedIn ? displayLoggedInUser() : displayLoggedOutUser()
 }
 
-export default User;
+export default User

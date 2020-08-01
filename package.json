@@ -3,67 +3,65 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "auth0-js": "^8.12.1",
-    "axios": "^0.17.1",
-    "react": "^16.2.0",
-    "react-contenteditable": "^2.0.5",
-    "react-dom": "^16.2.0",
-    "react-intl": "^2.4.0",
-    "react-loadable": "^5.3.1",
-    "react-redux": "^5.0.6",
-    "react-router": "^4.2.0",
-    "react-router-dom": "^4.2.2",
-    "react-router-redux": "^4.0.8",
-    "redux": "^3.7.2",
-    "redux-actions": "^2.2.1",
+    "@auth0/auth0-react": "^1.0.0",
+    "axios": "^0.19.0",
+    "connected-react-router": "^6.0.0",
+    "normalize.css": "^8.0.0",
+    "react": "^16.8.5",
+    "react-contenteditable": "^3.3.5",
+    "react-dom": "^16.8.5",
+    "react-intl": "^5.0.0",
+    "react-redux": "^7.0.0",
+    "react-router": "^5.0.0",
+    "react-router-dom": "^5.0.0",
+    "react-scripts": "^3.0.0",
+    "redux": "^4.0.0",
     "redux-localstorage": "^0.4.1",
-    "redux-saga": "^0.16.0",
-    "seamless-immutable": "^7.1.2"
+    "redux-saga": "^1.0.0",
+    "seamless-immutable": "^7.1.0"
   },
   "scripts": {
-    "start": "react-scripts-ts start",
-    "lint": "npx tslint -c tslint.json 'src/**/*.ts*'",
-    "build": "REACT_APP_APP_ENV=heroku REACT_APP_AUTH0_DOMAIN=berlin-church.eu.auth0.com REACT_APP_AUTH0_CLIENT_ID=3PY4nun7Cyjmj35iNNCIe6d1xO54ZJac react-scripts-ts build",
-    "test": "react-scripts-ts test --env=jsdom",
-    "eject": "react-scripts-ts eject"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "lint": "eslint 'src/**/*' --ignore-pattern 'src/**/*.scss' --ignore-pattern 'src/**/*.css'",
+    "prettier": "prettier --write 'src/**/*'"
   },
   "devDependencies": {
-    "@types/auth0-js": "^8.11.1",
-    "@types/axios": "^0.14.0",
-    "@types/enzyme": "^3.1.5",
-    "@types/jest": "^21.1.5",
-    "@types/node": "^8.0.47",
-    "@types/react": "^16.0.20",
-    "@types/react-dom": "^16.0.2",
-    "@types/react-intl": "^2.3.2",
-    "@types/react-loadable": "^5.3.1",
-    "@types/react-redux": "^5.0.12",
-    "@types/react-router": "^4.0.15",
-    "@types/react-router-dom": "^4.2.0",
-    "@types/react-router-redux": "^5.0.7",
-    "@types/redux": "^3.6.0",
-    "@types/redux-actions": "^2.2.2",
-    "@types/seamless-immutable": "^7.1.1",
-    "enzyme": "^3.2.0",
-    "enzyme-adapter-react-16": "^1.1.0",
-    "react-scripts-ts": "2.13.0",
-    "typescript": "^2.6.2"
+    "@testing-library/jest-dom": "^5.0.0",
+    "@testing-library/react": "^10.0.0",
+    "@types/jest": "^26.0.0",
+    "@types/node": "^10.12.10",
+    "@types/react": "^16.7.8",
+    "@types/react-dom": "^16.0.11",
+    "@types/react-redux": "^7.0.0",
+    "@types/react-router": "^5.0.0",
+    "@types/react-router-dom": "^5.0.0",
+    "@types/react-router-redux": "^5.0.16",
+    "@types/seamless-immutable": "^7.1.4",
+    "node-sass": "^4.10.0",
+    "prettier": "^2.0.0",
+    "redux-devtools-extension": "^2.13.7",
+    "typescript": "^3.9.0"
   },
-  "jest": {
-    "collectCoverageFrom": [
-      "**/src/containers/**/*.{ts,tsx}",
-      "**/src/components/**/*.{ts,tsx}",
-      "**/src/redux/**/*.{ts,tsx}",
-      "!**/node_modules/**",
-      "!**/vendor/**"
+  "prettier": {
+    "semi": false,
+    "singleQuote": true
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
     ],
-    "coverageThreshold": {
-      "global": {
-        "branches": 80,
-        "functions": 80,
-        "lines": 80,
-        "statements": 80
-      }
-    }
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }

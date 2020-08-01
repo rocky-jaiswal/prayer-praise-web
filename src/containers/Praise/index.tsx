@@ -1,78 +1,85 @@
-import * as React from 'react';
-import { connect } from 'react-redux';
+import * as React from 'react'
+import { useEffect } from 'react'
+import { connect } from 'react-redux'
 
-import LoadingSpinner from '../../components/LoadingSpinner';
-import SubmissionForm from '../../components/SubmissionForm';
-import { PrayerPraise, ShareStatus } from '../../constants/enums';
-import { ActionType, Dispatch, RootStateType } from '../../constants/types';
-import { withUserProfile } from '../Main';
+import LoadingSpinner from '../../components/LoadingSpinner'
+import SubmissionForm from '../../components/SubmissionForm'
+import { PrayerPraise, ShareStatus } from '../../constants/enums'
+import { ActionType, Dispatch, RootStateType } from '../../constants/types'
+import { withLayout } from '../Main'
 import {
-  changeMessageText, changeMessageType, changeSharedStatus, clearDisplay, submitMessage
-} from './actions';
+  changeMessageText,
+  changeMessageType,
+  changeSharedStatus,
+  clearDisplay,
+  submitMessage,
+} from './actions'
+import { isLoggedIn } from '../App/selectors'
 
 interface StateProps {
-  displayMessage?: string;
-  loading: boolean;
-  loggedIn: boolean;
-  messageText: string;
-  sharedStatus: ShareStatus;
+  displayMessage?: string
+  loading: boolean
+  loggedIn: boolean
+  messageText: string
+  sharedStatus: ShareStatus
 }
 
 interface DispatchProps {
-  changeMessageText(payload: string): ActionType<string>;
-  changeSharedStatus(payload: ShareStatus): ActionType<ShareStatus>;
-  clearDisplay(): ActionType<void>;
-  submitMessage(): ActionType<void>;
-  changeMessageType(): ActionType<PrayerPraise>;
+  changeMessageText(payload: string): ActionType<string>
+  changeSharedStatus(payload: ShareStatus): ActionType<ShareStatus>
+  clearDisplay(): ActionType<void>
+  submitMessage(): ActionType<void>
+  changeMessageType(): ActionType<PrayerPraise>
 }
 
 function mapStateToProps(state: RootStateType): StateProps {
   return {
     displayMessage: state.messages.displayMessage,
     loading: state.messages.loading,
-    loggedIn: !!state.app.jwtToken && !!state.app.username,
+    loggedIn: isLoggedIn(state.app),
     messageText: state.messages.messageText,
-    sharedStatus: state.messages.sharedStatus
-  };
+    sharedStatus: state.messages.sharedStatus,
+  }
 }
 
 function mapDispatchToProps(dispatch: Dispatch): DispatchProps {
   return {
-    changeMessageText: (payload: string) => dispatch(changeMessageText(payload)),
+    changeMessageText: (payload: string) =>
+      dispatch(changeMessageText(payload)),
     changeMessageType: () => dispatch(changeMessageType(PrayerPraise.PRAISE)),
-    changeSharedStatus: (payload: ShareStatus) => dispatch(changeSharedStatus(payload)),
+    changeSharedStatus: (payload: ShareStatus) =>
+      dispatch(changeSharedStatus(payload)),
     clearDisplay: () => dispatch(clearDisplay()),
-    submitMessage: () => dispatch(submitMessage())
-  };
+    submitMessage: () => dispatch(submitMessage()),
+  }
 }
 
-type AppProps = StateProps & DispatchProps;
+type AppProps = StateProps & DispatchProps
 
-export class Praise extends React.Component<AppProps, never> {
+const Praise = (props: AppProps) => {
+  useEffect(() => {
+    props.clearDisplay()
+    props.changeMessageType()
+  }, [])
 
-  componentDidMount() {
-    this.props.clearDisplay();
-    this.props.changeMessageType();
+  if (props.loading) {
+    return <LoadingSpinner />
   }
 
-  render() {
-    if (this.props.loading) {
-      return <LoadingSpinner />;
-    }
-    return (
-      <SubmissionForm
-        displayMessage={this.props.displayMessage}
-        formType={PrayerPraise.PRAISE}
-        loggedIn={this.props.loggedIn}
-        messageText={this.props.messageText}
-        sharedStatus={this.props.sharedStatus}
-        handleChangeMessageText={(text: string) => this.props.changeMessageText(text)}
-        handleChangeShareStatus={(status: ShareStatus) => this.props.changeSharedStatus(status)}
-        handleSubmit={() => this.props.submitMessage()}
-      />
-    );
-  }
-
+  return (
+    <SubmissionForm
+      displayMessage={props.displayMessage}
+      formType={PrayerPraise.PRAISE}
+      loggedIn={props.loggedIn}
+      messageText={props.messageText}
+      sharedStatus={props.sharedStatus}
+      handleChangeMessageText={(text: string) => props.changeMessageText(text)}
+      handleChangeShareStatus={(status: ShareStatus) =>
+        props.changeSharedStatus(status)
+      }
+      handleSubmit={() => props.submitMessage()}
+    />
+  )
 }
 
-export default withUserProfile(connect(mapStateToProps, mapDispatchToProps)(Praise));
+export default withLayout(connect(mapStateToProps, mapDispatchToProps)(Praise))

@@ -1,107 +1,84 @@
-import * as React from 'react';
-import { connect } from 'react-redux';
+import * as React from 'react'
+import { useEffect } from 'react'
+import { connect } from 'react-redux'
 
-import Layout from '../../components/Layout';
-import { ActionType, RootStateType, Dispatch } from '../../constants/types';
+import Layout from '../../components/Layout'
+
+import { ActionType, RootStateType, Dispatch } from '../../constants/types'
 import {
-  fetchToken,
-  fetchUserProfile,
-  logout,
   resetSidebar,
   switchLanguage,
-  toggleSidebar
-} from '../App/actions';
+  toggleSidebar,
+  fetchUserProfile,
+  logout,
+} from '../App/actions'
+import { isLoggedIn } from '../App/selectors'
 
-import './styles.css';
+import './styles.css'
 
 interface StateProps {
-  accessToken?: string;
-  // tslint:disable-next-line:no-any
-  auth0?: any;
-  jwtToken?: string;
-  username?: string;
-  profilePic?: string;
-  sidebarVisible: boolean;
+  jwtToken: string
+  username?: string
+  profilePic?: string
+  sidebarVisible: boolean
+  loggedIn: boolean
+  children: any
+  match: any
 }
 
 interface DispatchProps {
-  fetchToken(): ActionType<void>;
-  fetchUserProfile(): ActionType<void>;
-  logout(): ActionType<void>;
-  switchLanguage(payload: string): ActionType<string>;
-  resetSidebar(): ActionType<void>;
-  toggleSidebar(): ActionType<void>;
+  switchLanguage(payload: string): ActionType<string>
+  resetSidebar(): ActionType<void>
+  toggleSidebar(): ActionType<void>
+  fetchUserProfile(): ActionType<void>
+  logout(): ActionType<void>
 }
 
-// tslint:disable-next-line:no-any
 function mapStateToProps(state: RootStateType, ownProps: any): StateProps {
   return {
-    accessToken: state.app.accessToken,
-    auth0: state.app.auth0,
     jwtToken: state.app.jwtToken,
+    username: state.app.username,
     profilePic: state.app.profilePic,
     sidebarVisible: state.app.sidebarVisible,
-    username: state.app.username,
-    ...ownProps
-  };
+    loggedIn: isLoggedIn(state.app),
+    ...ownProps,
+  }
 }
 
 function mapDispatchToProps(dispatch: Dispatch): DispatchProps {
   return {
-    fetchToken: () => (dispatch(fetchToken())),
-    fetchUserProfile: () => dispatch(fetchUserProfile()),
-    logout: () => dispatch(logout()),
     resetSidebar: () => dispatch(resetSidebar()),
     switchLanguage: (payload: string) => dispatch(switchLanguage(payload)),
-    toggleSidebar: () => dispatch(toggleSidebar())
-  };
+    toggleSidebar: () => dispatch(toggleSidebar()),
+    fetchUserProfile: () => dispatch(fetchUserProfile()),
+    logout: () => dispatch(logout()),
+  }
 }
 
-// tslint:disable-next-line:no-any
-export const withUserProfile = (WrappedComponent: any) => {
-
-  // tslint:disable-next-line:no-any
-  class Main extends React.Component<any, never> {
-
-    componentDidMount() {
-      this.checkAuth(this.props);
-      this.props.resetSidebar();
-    }
-
-    // tslint:disable-next-line:no-any
-    componentWillReceiveProps(nextProps: any) {
-      this.checkAuth(nextProps);
-    }
-
-    // tslint:disable-next-line:no-any
-    checkAuth(props: any) {
-      if (props.accessToken && !props.jwtToken) {
-        this.props.fetchToken();
+export const withLayout = (
+  WrappedComponent: React.JSXElementConstructor<any>
+) => {
+  const MainHoc = (props: StateProps & DispatchProps) => {
+    useEffect(() => {
+      if (props.jwtToken) {
+        props.fetchUserProfile()
       }
-      if (props.accessToken && props.jwtToken && !props.profilePic) {
-        props.fetchUserProfile();
-      }
-    }
+    }, [])
 
-    render() {
-      return (
-        <Layout
-          auth0={this.props.auth0}
-          jwtToken={this.props.jwtToken}
-          username={this.props.username}
-          profilePic={this.props.profilePic}
-          logout={this.props.logout}
-          sidebarVisible={this.props.sidebarVisible}
-          switchLanguage={this.props.switchLanguage}
-          toggleSidebar={this.props.toggleSidebar}
-        >
-          <WrappedComponent match={this.props.match} />
-        </Layout>
-      );
-    }
-
+    return (
+      <Layout
+        username={props.username}
+        profilePic={props.profilePic}
+        sidebarVisible={props.sidebarVisible}
+        switchLanguage={props.switchLanguage}
+        toggleSidebar={props.toggleSidebar}
+        loggedIn={props.loggedIn}
+        logout={props.logout}
+      >
+        <WrappedComponent match={props.match} />
+      </Layout>
+    )
   }
 
-  return connect(mapStateToProps, mapDispatchToProps)(Main);
-
-};
+  return connect(mapStateToProps, mapDispatchToProps)(MainHoc)
+}

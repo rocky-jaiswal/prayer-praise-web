@@ -1,36 +1,46 @@
-import { combineReducers, Reducer } from 'redux';
+import { combineReducers, Reducer } from 'redux'
+import { connectRouter } from 'connected-react-router'
 
-import { appReducer, initialState as appInitialState } from './app';
-import { messagesReducer, initialState as messagesInitialState } from './messages';
-import { myDataReducer, initialState as myDataInitialState } from './myData';
-import { sharedMessagesReducer, initialState as sharedMessagesInitialState } from './sharedMessages';
-import { routeReducer } from './route';
+import { appReducer, initialState as appInitialState } from './app'
+import {
+  messagesReducer,
+  initialState as messagesInitialState,
+} from './messages'
+import { myDataReducer, initialState as myDataInitialState } from './myData'
+import {
+  sharedMessagesReducer,
+  initialState as sharedMessagesInitialState,
+} from './sharedMessages'
+// import { routeReducer } from './route'
 
-import { RootStateType, ActionType } from '../constants/types';
+import { RootStateType, ActionType } from '../constants/types'
 
 export const reduxInitialState: RootStateType = {
   app: appInitialState,
   messages: messagesInitialState,
   myData: myDataInitialState,
-  sharedMessages: sharedMessagesInitialState
-};
+  sharedMessages: sharedMessagesInitialState,
+}
 
-export function createReducer(): Reducer<RootStateType> {
+export function createReducer(history: any): Reducer<RootStateType> {
   const reducer = combineReducers<RootStateType>({
     app: appReducer,
     messages: messagesReducer,
     myData: myDataReducer,
-    route: routeReducer,
-    sharedMessages: sharedMessagesReducer
-  });
+    router: connectRouter(history),
+    sharedMessages: sharedMessagesReducer,
+  })
 
-  const rootReducer = (state: RootStateType, action: ActionType<{}>): RootStateType => {
+  const rootReducer = (
+    state: RootStateType | undefined,
+    action: ActionType<{}>
+  ): RootStateType => {
     // if (action.type === LOGOUT) {
     //   localStorage.clear();
     //   state = reduxInitialState;
     // }
-    return reducer(state, action);
-  };
+    return reducer(state, action)
+  }
 
-  return rootReducer;
+  return rootReducer
 }

@@ -1,51 +1,24 @@
-import { History } from 'history';
-import { routerMiddleware } from 'react-router-redux';
-import { applyMiddleware, compose, createStore, Store } from 'redux';
-import createSagaMiddleware from 'redux-saga';
-import persistState from 'redux-localstorage';
-import * as Immutable from 'seamless-immutable';
+import { routerMiddleware } from 'connected-react-router'
+import { applyMiddleware, createStore, Store } from 'redux'
+import { composeWithDevTools } from 'redux-devtools-extension'
+import createSagaMiddleware from 'redux-saga'
 
-import { RootStateType } from '../constants/types';
-import { createReducer, reduxInitialState } from '../redux';
+import { RootStateType } from '../constants/types'
+import { createReducer, reduxInitialState } from '../redux'
+import allSagas from '../sagas'
 
-import allSagas from '../sagas';
+const sagaMiddleware = createSagaMiddleware()
 
-const sagaMiddleware = createSagaMiddleware();
+export function configureStore(history: any): Store<RootStateType> {
+  const middlewares = [sagaMiddleware, routerMiddleware(history)]
 
-export function configureStore(history: History): Store<RootStateType> {
-
-  const middlewares = [
-    sagaMiddleware,
-    routerMiddleware(history)
-  ];
-
-  const enhancers = [
-    applyMiddleware(...middlewares),
-    persistState(
-      ['app'],
-      {
-        deserialize: (serializedData: string) => {
-          return Immutable.from(JSON.parse(serializedData));
-        }
-      }
-    )
-  ];
-
-  const composeEnhancers =
-    process.env.NODE_ENV !== 'production' &&
-      // tslint:disable-next-line:no-string-literal
-      window['__REDUX_DEVTOOLS_EXTENSION_COMPOSE__'] ?
-      // tslint:disable-next-line:no-string-literal
-      window['__REDUX_DEVTOOLS_EXTENSION_COMPOSE__'] : compose;
-
-  const store = createStore<RootStateType>(
-    createReducer(),
+  const store = createStore<RootStateType, { type: any }, {}, {}>(
+    createReducer(history),
     reduxInitialState,
-    composeEnhancers(...enhancers)
-  );
+    composeWithDevTools(applyMiddleware(...middlewares))
+  )
 
-  allSagas.map((saga) => sagaMiddleware.run(saga));
+  allSagas.map((saga) => sagaMiddleware.run(saga))
 
-  return store;
-
+  return store
 }

@@ -16,6 +16,7 @@ import DisplayMessage from '../../components/DisplayMessage'
 import LoadingSpinner from '../../components/LoadingSpinner'
 import MessageCards from '../../components/MessageCards'
 import Paginator from '../../components/Paginator'
+import { ReactComponent as ReloadIcon } from './reload.svg'
 
 import './styles.css'
 
@@ -81,7 +82,7 @@ const Root = (props: StateProps & DispatchProps) => {
           <FormattedMessage id="container.Root.heading" />
         </h1>
         <button className="reload" onClick={() => props.fetchSharedMessages()}>
-          ↻
+          <ReloadIcon />
         </button>
       </div>
       <Paginator

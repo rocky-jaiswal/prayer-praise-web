@@ -46,7 +46,7 @@ function mapStateToProps(state: RootStateType): StateProps {
     loading: state.myData.loading,
     messageForEditId: state.myData.messageForEdit.id,
     messageForEditSharedStatus: state.myData.messageForEdit.sharedStatus,
-    messageForEditText: state.myData.messageForEdit.text,
+    messageForEditText: state.myData.messageForEdit.messageText,
     messageForEditType:
       state.myData.messageForEdit.messageType || PrayerPraise.PRAISE,
     loggedIn: isLoggedIn(state.app),

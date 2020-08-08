@@ -1,4 +1,5 @@
 import { call, put, takeLatest } from 'redux-saga/effects'
+import humps from 'humps'
 
 import {
   editMessageFailed,
@@ -14,7 +15,10 @@ function* editMessage(action: ActionType<number>) {
   try {
     yield put(editMessageInProgress())
     const result = yield call(AppAPI.editMessage, action.payload as number)
-    yield put(editMessageSuccessful(result.data))
+
+    const data = result.data
+
+    yield put(editMessageSuccessful(humps.camelizeKeys(data)))
   } catch (err) {
     console.error(err)
     yield put(editMessageFailed())

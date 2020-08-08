@@ -27,7 +27,7 @@ const istate: MyDataType = {
   loading: false,
   messageForEdit: {
     id: undefined,
-    text: undefined,
+    messageText: undefined,
     sharedStatus: undefined,
     messageType: undefined,
   },
@@ -89,7 +89,7 @@ export function myDataReducer(
         .set('loading', false)
         .setIn(['messageForEdit', 'id'], action.payload.id)
         .setIn(['messageForEdit', 'sharedStatus'], action.payload.sharedStatus)
-        .setIn(['messageForEdit', 'text'], action.payload.messageText)
+        .setIn(['messageForEdit', 'messageText'], action.payload.messageText)
         .setIn(['messageForEdit', 'messageType'], action.payload.messageType)
         .set('displayMessage', undefined)
 
@@ -117,7 +117,7 @@ export function myDataReducer(
       return state.setIn(['messageForEdit', 'sharedStatus'], action.payload)
 
     case CHANGE_EXISTING_MESSAGE_TEXT:
-      return state.setIn(['messageForEdit', 'text'], action.payload)
+      return state.setIn(['messageForEdit', 'messageText'], action.payload)
 
     default:
       return state

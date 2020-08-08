@@ -66,7 +66,7 @@ export type SharedMessagesType = SharedMessages
 
 interface MessageForEdit {
   id?: number
-  text?: string
+  messageText?: string
   sharedStatus?: ShareStatus
   messageType?: PrayerPraise
 }

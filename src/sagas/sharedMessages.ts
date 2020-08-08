@@ -1,10 +1,12 @@
 import { call, put, select, takeLatest } from 'redux-saga/effects'
+import humps from 'humps'
 
 import {
   fetchSharedMessagesFailed,
   fetchSharedMessagesInProgress,
   fetchSharedMessagesSuccessful,
 } from '../containers/Root/actions'
+import { SharedMessageType } from '../constants/types'
 import { FETCH_SHARED_MESSAGES } from '../containers/Root/constants'
 
 import AppAPI from '../api'
@@ -17,9 +19,14 @@ function* getSharedMessages() {
       AppAPI.fetchSharedMessages,
       state.sharedMessages.currentPage
     )
-    yield put(fetchSharedMessagesSuccessful(result.data))
+
+    const data = result.data
+    data.content = data.content.map((msg: SharedMessageType) =>
+      humps.camelizeKeys(msg)
+    )
+
+    yield put(fetchSharedMessagesSuccessful(data))
   } catch (err) {
-    // tslint:disable-next-line:no-console
     console.error(err)
     yield put(fetchSharedMessagesFailed())
   }

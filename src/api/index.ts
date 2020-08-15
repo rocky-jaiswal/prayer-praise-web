@@ -24,7 +24,7 @@ const AppAPI = {
     return AppAPI.init().get(Config.env.baseURL + '/me')
   },
 
-  async submitMessage(message: SharedMessageType) {
+  async createMessage(message: SharedMessageType) {
     return AppAPI.init().post(Config.env.baseURL + '/messages', { message })
   },
 
@@ -48,7 +48,10 @@ const AppAPI = {
 
   async updateMessage(message: SharedMessageType) {
     return AppAPI.init().put(Config.env.baseURL + `/messages/${message.id}`, {
-      message,
+      message: {
+        messageText: message.messageText,
+        sharedStatus: message.sharedStatus,
+      },
     })
   },
 }

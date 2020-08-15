@@ -6,6 +6,7 @@
   flex-wrap: wrap;
   flex-shrink: 1;
   align-items: center;
+  min-height: 80%;
 }
 
 .message {

@@ -20,7 +20,7 @@ function* createMessage() {
     const messageText = state.messages.messageText
     const sharedStatus = state.messages.sharedStatus
 
-    yield call(API.submitMessage, {
+    yield call(API.createMessage, {
       messageType,
       messageText,
       sharedStatus,

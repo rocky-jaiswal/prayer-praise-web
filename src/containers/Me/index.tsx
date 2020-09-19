@@ -21,7 +21,6 @@ import {
   unsetMessageToView,
 } from './actions'
 import { isLoggedIn } from '../App/selectors'
-import './styles.css'
 
 interface StateProps {
   loading: boolean

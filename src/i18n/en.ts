@@ -1,7 +1,6 @@
 export default {
   'container.Me.heading': 'My data',
   'container.Root.heading': 'Welcome Church',
-  // tslint:disable-next-line:object-literal-sort-keys
   'components.Header.main': 'Prayers and Praises',
   'components.Footer.main': '❤ Berlin Church 2018',
   'components.Badge.praise': 'Praise',

@@ -29,7 +29,6 @@ const MyMessages = (props: Props) => {
               expand={() => ({ type: 'noop', payload: 0 })}
             />
             <div className="message-actions">
-              <span className="message-type">{message.messageType}</span>
               <span className="shared-status">{message.sharedStatus}</span>
               <span>
                 <button

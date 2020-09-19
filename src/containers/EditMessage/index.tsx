@@ -3,19 +3,19 @@ import { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { RouteComponentProps } from 'react-router'
 
-import LoadingSpinner from '../../components/LoadingSpinner'
-import SubmissionForm from '../../components/SubmissionForm'
 import { PrayerPraise, ShareStatus } from '../../constants/enums'
 import { ActionType, Dispatch, RootStateType } from '../../constants/types'
 import { withLayout } from '../Main'
+import { isLoggedIn } from '../App/selectors'
 import {
   changeExistingMessageSharedStatus,
   changeExistingMessageText,
   editMessage,
   updateMessage,
 } from '../Me/actions'
-import { isLoggedIn } from '../App/selectors'
-import '../Me/styles.css'
+
+import LoadingSpinner from '../../components/LoadingSpinner'
+import SubmissionForm from '../../components/SubmissionForm'
 
 interface StateProps {
   displayMessage?: string

@@ -21,7 +21,7 @@ const SelectBar = (props: Props) => {
   }
 
   return (
-    <div className={'selectbar'}>
+    <div className="selectbar">
       <div
         className={determineClass()}
         onClick={() =>

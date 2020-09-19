@@ -13,10 +13,10 @@ import { withLayout } from '../Main'
 import { expandMessage, fetchSharedMessages, setPage } from './actions'
 
 import DisplayMessage from '../../components/DisplayMessage'
+import ReloadAction from '../../components/ReloadAction'
 import LoadingSpinner from '../../components/LoadingSpinner'
 import MessageCards from '../../components/MessageCards'
 import Paginator from '../../components/Paginator'
-import { ReactComponent as ReloadIcon } from './reload.svg'
 
 interface StateProps {
   displayMessage?: string
@@ -30,9 +30,9 @@ interface StateProps {
 }
 
 interface DispatchProps {
+  fetchSharedMessages(): ActionType<void>
   expandMessage(id?: number): ActionType<number>
   setPage(page: number): ActionType<number>
-  fetchSharedMessages(): ActionType<void>
 }
 
 const mapStateToProps = (state: RootStateType): StateProps => {
@@ -57,6 +57,8 @@ const mapDispatchToProps = (dispatch: Dispatch): DispatchProps => {
 }
 
 const Root = (props: StateProps & DispatchProps) => {
+  const { fetchSharedMessages } = props
+
   const showContent = () => {
     if (
       props.loading ||
@@ -67,12 +69,7 @@ const Root = (props: StateProps & DispatchProps) => {
     } else {
       return (
         <div>
-          <button
-            className="reload"
-            onClick={() => props.fetchSharedMessages()}
-          >
-            <ReloadIcon />
-          </button>
+          <ReloadAction action={fetchSharedMessages} />
           <Paginator
             currentPage={props.currentPage}
             totalPages={props.totalPages}
@@ -98,8 +95,6 @@ const Root = (props: StateProps & DispatchProps) => {
       )
     }
   }
-
-  const { fetchSharedMessages } = props
 
   useEffect(() => {
     fetchSharedMessages()

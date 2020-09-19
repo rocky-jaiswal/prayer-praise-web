@@ -7,8 +7,6 @@ import './styles.css'
 
 interface Props {
   loggedIn: boolean
-  username?: string
-  profilePic?: string
   logout(): ActionType<void>
 }
 
@@ -17,8 +15,7 @@ const User = (props: Props) => {
 
   const displayLoggedInUser = () => {
     return (
-      <div className="userProfile">
-        <img src={props.profilePic} alt={props.username} />
+      <div className="user-profile">
         <button onClick={() => props.logout()}>
           <FormattedMessage id="actions.logout" />
         </button>
@@ -28,7 +25,7 @@ const User = (props: Props) => {
 
   const displayLoggedOutUser = () => {
     return (
-      <div className="userProfile">
+      <div className="user-profile">
         <button onClick={() => loginWithRedirect()}>
           <FormattedMessage id="actions.login" />
         </button>

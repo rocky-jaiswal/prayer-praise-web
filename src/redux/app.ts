@@ -18,7 +18,7 @@ export const istate: AppStateType = {
   error: null,
   locale: LocaleEnum.en,
   profilePic: null,
-  sidebarVisible: true,
+  sidebarVisible: false,
   username: undefined,
   admin: false,
 }

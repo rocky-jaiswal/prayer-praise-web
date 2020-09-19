@@ -1,11 +1,10 @@
 import * as React from 'react'
 import { FormattedMessage } from 'react-intl'
 
-import MessageSummary from './MessageSummary'
-import FullMessage from './FullMessage'
-import DisplayMessage from '../DisplayMessage'
-
 import { SharedMessageType, ActionType } from '../../constants/types'
+import DisplayMessage from '../DisplayMessage'
+import ExpandedMessage from '../MessageCards/ExpandedMessage'
+
 import './styles.css'
 
 interface Props {
@@ -19,49 +18,22 @@ interface Props {
 }
 
 const MyMessages = (props: Props) => {
-  const showSummaryOrFullMessage = (message: SharedMessageType) => {
-    if (props.selectedMessageId === message.id) {
-      return <FullMessage message={message} />
-    }
-    return <MessageSummary message={message} />
-  }
-
   return (
-    <div className="user-messages">
+    <div className="root-container">
       <DisplayMessage message={props.displayMessage} />
       {props.messages.map((message) => {
         return (
-          <div
-            className={
-              props.selectedMessageId === message.id ? 'fullMessage' : 'message'
-            }
-            key={message.id}
-          >
-            {showSummaryOrFullMessage(message)}
-            <div className="messageActions">
+          <div className="my-message" key={message.id}>
+            <ExpandedMessage
+              message={message}
+              expand={() => ({ type: 'noop', payload: 0 })}
+            />
+            <div className="message-actions">
               <span className="message-type">{message.messageType}</span>
               <span className="shared-status">{message.sharedStatus}</span>
               <span>
                 <button
-                  className={'viewButton'}
-                  onClick={
-                    props.selectedMessageId === message.id
-                      ? () => props.unsetMessageToView()
-                      : () => props.setMessageToView(message.id)
-                  }
-                >
-                  <FormattedMessage
-                    id={
-                      props.selectedMessageId === message.id
-                        ? 'actions.collapse'
-                        : 'actions.view'
-                    }
-                  />
-                </button>
-              </span>
-              <span>
-                <button
-                  className={'editButton'}
+                  className="editButton"
                   onClick={() =>
                     props.editMessage(
                       message.id,
@@ -74,7 +46,7 @@ const MyMessages = (props: Props) => {
               </span>
               <span>
                 <button
-                  className={'deleteButton'}
+                  className="deleteButton"
                   onClick={() => props.deleteMessage(message.id)}
                 >
                   <FormattedMessage id="actions.delete" />

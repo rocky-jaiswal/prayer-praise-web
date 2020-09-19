@@ -32,9 +32,8 @@
 }
 
 .user-name {
-  background: #607d8b;
-  padding: 5px;
-  height: 30px;
+  color: var(--blue-grey-1);
+  text-align: right;
 }
 
 .message-text {
@@ -48,6 +47,11 @@
   min-height: 300px;
   width: 100%;
   border-bottom: 1px solid var(--grey-darken-2);
+}
+
+.expanded-message .user-name {
+  padding-left: 5px;
+  text-align: left;
 }
 
 .expanded-message-text {

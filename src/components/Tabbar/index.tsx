@@ -8,7 +8,7 @@ interface Props {
 
 const Tabbar = (props: Props) => {
   return (
-    <div className="nav-content grey darken-1">
+    <div className="nav-content tabbar-color">
       <div className="container">
         <ul className="tabs tabs-transparent">
           <li className="tab">

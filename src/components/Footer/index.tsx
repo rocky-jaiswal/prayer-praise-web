@@ -5,7 +5,7 @@ import './styles.css'
 
 const Footer = () => {
   return (
-    <footer className="page-footer footer grey darken-1">
+    <footer className="page-footer footer">
       <a href="https://berlin.church">
         <FormattedMessage id="components.Footer.main" />
       </a>

@@ -1,6 +1,5 @@
-@import '../../main.css';
-
 .footer {
+  background-color: var(--grey-darken-1);
   padding: 15px;
 }
 

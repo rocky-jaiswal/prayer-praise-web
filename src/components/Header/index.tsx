@@ -13,7 +13,7 @@ interface Props {
 const Header = (props: Props) => {
   return (
     <nav className="nav-extended">
-      <div className="nav-wrapper grey darken-3">
+      <div className="nav-wrapper nav-color">
         <div className="custom-logo">
           <Link to="/" className="brand-logo">
             <FormattedMessage id="components.Header.main" />

@@ -18,8 +18,6 @@ import MessageCards from '../../components/MessageCards'
 import Paginator from '../../components/Paginator'
 import { ReactComponent as ReloadIcon } from './reload.svg'
 
-import './styles.css'
-
 interface StateProps {
   displayMessage?: string
   expandedMessage?: number

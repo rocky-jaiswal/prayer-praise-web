@@ -2,8 +2,6 @@ import * as React from 'react'
 import { FormattedMessage } from 'react-intl'
 import { Link } from 'react-router-dom'
 
-import './styles.css'
-
 interface Props {
   loggedIn: boolean
 }

@@ -8,8 +8,6 @@ import LoadingSpinner from '../../components/LoadingSpinner'
 import { ActionType, Dispatch, RootStateType } from '../../constants/types'
 import { login } from '../App/actions'
 
-import './styles.css'
-
 interface StateProps {
   jwtToken?: string | null
 }

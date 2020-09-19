@@ -6,13 +6,14 @@ import { push, RouterAction } from 'connected-react-router'
 
 import LoadingSpinner from '../../components/LoadingSpinner'
 import MyMessages from '../../components/MyMessages'
+import { withLayout } from '../Main'
+import { isLoggedIn } from '../App/selectors'
 import {
   ActionType,
   Dispatch,
   RootStateType,
   SharedMessageType,
 } from '../../constants/types'
-import { withLayout } from '../Main'
 import {
   deleteMessage,
   fetchMyMessages,
@@ -20,7 +21,6 @@ import {
   setMessageToView,
   unsetMessageToView,
 } from './actions'
-import { isLoggedIn } from '../App/selectors'
 
 interface StateProps {
   loading: boolean

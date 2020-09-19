@@ -57,7 +57,18 @@ const mapDispatchToProps = (dispatch: Dispatch): DispatchProps => {
 }
 
 const Root = (props: StateProps & DispatchProps) => {
-  const { fetchSharedMessages } = props
+  const { fetchSharedMessages, setPage, expandMessage } = props
+
+  const showPaginator = () => (
+    <Paginator
+      currentPage={props.currentPage}
+      totalPages={props.totalPages}
+      fetchSharedMessages={(page) => {
+        setPage(page)
+        fetchSharedMessages()
+      }}
+    />
+  )
 
   const showContent = () => {
     if (
@@ -70,27 +81,13 @@ const Root = (props: StateProps & DispatchProps) => {
       return (
         <div>
           <ReloadAction action={fetchSharedMessages} />
-          <Paginator
-            currentPage={props.currentPage}
-            totalPages={props.totalPages}
-            fetchSharedMessages={(page) => {
-              props.setPage(page)
-              props.fetchSharedMessages()
-            }}
-          />
+          {showPaginator()}
           <MessageCards
-            expand={props.expandMessage}
+            expand={expandMessage}
             expandedMessage={props.expandedMessage}
             sharedMessages={props.sharedMessages}
           />
-          <Paginator
-            currentPage={props.currentPage}
-            totalPages={props.totalPages}
-            fetchSharedMessages={(page) => {
-              props.setPage(page)
-              props.fetchSharedMessages()
-            }}
-          />
+          {showPaginator()}
         </div>
       )
     }

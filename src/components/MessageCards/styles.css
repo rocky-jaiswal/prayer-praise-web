@@ -46,6 +46,7 @@
 
 .expanded-message {
   min-height: 300px;
+  width: 100%;
   border-bottom: 1px solid var(--grey-darken-2);
 }
 

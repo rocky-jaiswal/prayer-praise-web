@@ -55,10 +55,12 @@ function mapDispatchToProps(dispatch: Dispatch): DispatchProps {
 }
 
 const Prayer = (props: StateProps & DispatchProps) => {
+  const { clearDisplay, changeMessageType } = props
+
   useEffect(() => {
-    props.clearDisplay()
-    props.changeMessageType()
-  }, [])
+    clearDisplay()
+    changeMessageType()
+  }, [clearDisplay, changeMessageType])
 
   if (props.loading) {
     return <LoadingSpinner />

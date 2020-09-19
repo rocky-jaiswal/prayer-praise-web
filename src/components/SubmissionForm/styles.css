@@ -7,29 +7,19 @@
   width: 100%;
 }
 
-.formContainer h2 {
-  text-transform: uppercase;
-  margin-bottom: 10px;
-}
-
 button.submitButton {
   width: 100px;
   margin-top: 20px;
   padding: 10px;
-  border-radius: var(--app-radius);
-  border: none;
-  color: var(--main-white);
-  background-color: var(--main-green);
+  color: var(--grey-lighten-5);
+  background-color: var(--grey-darken-5);
 }
 
 button.disabledButton {
   width: 100px;
   margin-top: 20px;
   padding: 10px;
-  border-radius: var(--app-radius);
-  border: none;
-  color: var(--main-white);
-  background-color: var(--main-gray);
+  background-color: var(--grey-lighten-2);
 }
 
 .contentHolder {
@@ -40,7 +30,6 @@ button.disabledButton {
   background-repeat: repeat;
   font-size: 22px;
   line-height: 41px;
-  width: 80%;
   margin-bottom: 20px;
   resize: none;
   outline: none;
@@ -52,5 +41,5 @@ button.disabledButton {
   padding: 10px 0;
   font-size: 0.8em;
   font-style: italic;
-  color: var(--main-gray);
+  color: var(--grey);
 }

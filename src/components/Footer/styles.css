@@ -1,13 +1,11 @@
 @import '../../main.css';
 
 .footer {
-  background-color: var(--main-red);
-  color: var(--main-white);
-  padding: 10px;
+  padding: 15px;
 }
 
 .footer a {
-  color: var(--main-white);
+  color: var(--grey-lighten-3);
   text-decoration: none;
 }
 

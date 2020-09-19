@@ -1,25 +1,27 @@
-@import '../../main.css';
-
 .selectbar {
   display: flex;
   flex-direction: column;
-  color: var(--main-white);
+  color: var(--grey);
 }
 
 .selected {
   width: 50%;
   padding: 20px 10px;
   margin-bottom: 5px;
-  border-radius: var(--app-radius);
-  background-color: var(--main-red);
+  background-color: var(--grey-darken-3);
+}
+
+.selected::before {
+  content: '\203A';
+  font-size: 1.5rem;
+  margin-right: 5px;
 }
 
 .unselected {
   width: 50%;
-  padding: 20px 10px;
+  padding: 25px 10px;
   margin-bottom: 5px;
-  border-radius: var(--app-radius);
-  background-color: var(--main-gray);
+  background-color: var(--grey-lighten-3);
 }
 
 .hidden {

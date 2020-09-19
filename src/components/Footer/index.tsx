@@ -5,11 +5,11 @@ import './styles.css'
 
 const Footer = () => {
   return (
-    <div className={'footer'}>
+    <footer className="page-footer footer grey darken-1">
       <a href="https://berlin.church">
         <FormattedMessage id="components.Footer.main" />
       </a>
-    </div>
+    </footer>
   )
 }
 

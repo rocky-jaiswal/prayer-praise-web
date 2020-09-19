@@ -65,9 +65,11 @@ function mapDispatchToProps(dispatch: Dispatch): DispatchProps {
 }
 
 const EditMessage = (props: AppProps) => {
+  const { editMessage, messageForEditId, match } = props
+
   useEffect(() => {
-    props.editMessage(props.messageForEditId || props.match.params.id)
-  }, [])
+    editMessage(messageForEditId || match.params.id)
+  }, [editMessage, messageForEditId, match])
 
   if (props.loading || !props.messageForEditId || !props.messageForEditText) {
     return <LoadingSpinner />

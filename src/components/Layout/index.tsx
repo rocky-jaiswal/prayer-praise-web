@@ -2,10 +2,10 @@ import * as React from 'react'
 
 import { ActionType } from '../../constants/types'
 
-import ExpandButton from '../ExpandButton'
 import Footer from '../Footer'
 import Header from '../Header'
 import Sidebar from '../Sidebar'
+
 import './styles.css'
 
 interface Props {
@@ -21,21 +21,21 @@ interface Props {
 
 const Layout = (props: Props) => {
   return (
-    <div className="main-container">
-      <Header
-        switchLanguage={props.switchLanguage}
-        loggedIn={props.loggedIn}
-        username={props.username}
-        profilePic={props.profilePic}
-        logout={props.logout}
-      />
-      <div className="page">
-        <Sidebar
-          loggedIn={props.loggedIn}
-          sidebarVisible={props.sidebarVisible}
-        />
-        <div className="main">{props.children}</div>
-        <ExpandButton toggleSidebar={props.toggleSidebar} />
+    <div>
+      <Header loggedIn={props.loggedIn} />
+      <div className="main">
+        <div className="container custom">
+          <div className="page">{props.children}</div>
+          <Sidebar
+            username={props.username}
+            profilePic={props.profilePic}
+            sidebarVisible={props.sidebarVisible}
+            loggedIn={props.loggedIn}
+            switchLanguage={props.switchLanguage}
+            toggleSidebar={props.toggleSidebar}
+            logout={props.logout}
+          />
+        </div>
       </div>
       <Footer />
     </div>

@@ -1,8 +1,6 @@
 import * as React from 'react'
 import { FormattedMessage } from 'react-intl'
 
-import './styles.css'
-
 interface Props {
   message?: string | null
 }

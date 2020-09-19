@@ -57,10 +57,12 @@ function mapDispatchToProps(dispatch: Dispatch): DispatchProps {
 type AppProps = StateProps & DispatchProps
 
 const Praise = (props: AppProps) => {
+  const { clearDisplay, changeMessageType } = props
+
   useEffect(() => {
-    props.clearDisplay()
-    props.changeMessageType()
-  }, [])
+    clearDisplay()
+    changeMessageType()
+  }, [clearDisplay, changeMessageType])
 
   if (props.loading) {
     return <LoadingSpinner />

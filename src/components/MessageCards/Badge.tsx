@@ -12,13 +12,13 @@ interface Props {
 const Badge = (props: Props) => {
   if (props.messageType === PrayerPraise.PRAISE) {
     return (
-      <div className={'praiseBadge'}>
+      <div className="praise-badge">
         <FormattedMessage id="components.Badge.praise" />
       </div>
     )
   }
   return (
-    <div className={'prayerBadge'}>
+    <div className="prayer-badge">
       <FormattedMessage id="components.Badge.prayer" />
     </div>
   )

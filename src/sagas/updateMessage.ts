@@ -18,7 +18,6 @@ function* updateMessage() {
     yield call(AppAPI.updateMessage, state.myData.messageForEdit)
     yield put(updateMessageSuccessful())
   } catch (err) {
-    // tslint:disable-next-line:no-console
     console.error(err)
     yield put(updateMessageFailed())
   }

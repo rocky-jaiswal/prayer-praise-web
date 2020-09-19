@@ -3,7 +3,7 @@ import { loginWatcher } from './login'
 import { logoutWatcher } from './logout'
 import { createMessageWatcher } from './createMessages'
 import { fetchMyMessagesWatcher } from './fetchMyMessages'
-import { sharedMessagesWatcher } from './sharedMessages'
+import { fetchSharedMessagesWatcher } from './fetchSharedMessages'
 import { deleteMessageWatcher } from './deleteMessage'
 import { editMessageWatcher } from './editMessage'
 import { updateMessageWatcher } from './updateMessage'
@@ -14,7 +14,7 @@ export default [
   logoutWatcher,
   createMessageWatcher,
   fetchMyMessagesWatcher,
-  sharedMessagesWatcher,
+  fetchSharedMessagesWatcher,
   deleteMessageWatcher,
   editMessageWatcher,
   updateMessageWatcher,

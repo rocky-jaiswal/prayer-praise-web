@@ -1,106 +1,15 @@
-@import '../../main.css';
-
-.user-messages {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-}
-
-.message {
-  display: flex;
-  flex-direction: row;
-  width: 90%;
-  padding: 20px;
-  margin: 5px 0;
-  border: 1px solid var(--main-gray);
-  background: var(--main-white);
-}
-
-@media (max-width: 800px) {
-  .message {
-    display: flex;
-    flex-direction: column;
-  }
-}
-
-.fullMessage {
-  display: flex;
-  flex-direction: column;
-  width: 90%;
-  padding: 20px;
-  margin: 5px 0;
-  border: 1px solid var(--main-gray);
-  background: var(--main-white);
-}
-
-.messageText {
-  display: flex;
-  width: 50%;
-}
-
-.expandedMessageText {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
+.my-message {
   margin-bottom: 20px;
+  background-color: var(--grey-lighten-1);
 }
 
-.messageActions {
+.my-message .expanded-message {
+  min-height: 200px;
+  max-height: 200px;
+}
+
+.message-actions {
   display: flex;
   justify-content: space-between;
-  flex-grow: 1;
-}
-
-.shared-status {
-  font-size: 0.8rem;
-  padding: 3px 3px 0 3px;
-  border-radius: var(--app-radius);
-  border: 1px dashed var(--main-gray);
-}
-
-.message-type {
-  font-size: 0.8rem;
-  padding: 3px 3px 0 3px;
-  border-radius: var(--app-radius);
-  border: 1px solid var(--main-gray);
-}
-
-.viewButton {
-  align-self: center;
-  border: none;
-  padding: 5px;
-  border-radius: var(--app-radius);
-  text-transform: uppercase;
-  text-align: center;
-  border: 1px solid var(--main-red);
-  background-color: var(--main-white);
-  color: var(--main-red);
-}
-
-.deleteButton {
-  align-self: center;
-  border: none;
-  padding: 5px;
-  border-radius: var(--app-radius);
-  text-transform: uppercase;
-  text-align: center;
-  color: var(--main-white);
-  background: var(--main-red);
-}
-
-.editButton {
-  align-self: center;
-  border: none;
-  padding: 5px;
-  border-radius: var(--app-radius);
-  text-transform: uppercase;
-  text-align: center;
-  color: var(--main-white);
-  background: var(--main-gray);
-}
-
-.userName {
-  padding: 5px;
-  background-color: var(--main-dark);
-  color: var(--main-white);
+  background-color: var(--grey);
 }

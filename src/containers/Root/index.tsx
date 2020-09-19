@@ -59,17 +59,53 @@ const mapDispatchToProps = (dispatch: Dispatch): DispatchProps => {
 }
 
 const Root = (props: StateProps & DispatchProps) => {
-  useEffect(() => {
-    props.fetchSharedMessages()
-  }, [])
-
-  if (
-    props.loading ||
-    !props.sharedMessages ||
-    props.sharedMessages.length === 0
-  ) {
-    return <LoadingSpinner />
+  const showContent = () => {
+    if (
+      props.loading ||
+      !props.sharedMessages ||
+      props.sharedMessages.length === 0
+    ) {
+      return <LoadingSpinner />
+    } else {
+      return (
+        <div>
+          <button
+            className="reload"
+            onClick={() => props.fetchSharedMessages()}
+          >
+            <ReloadIcon />
+          </button>
+          <Paginator
+            currentPage={props.currentPage}
+            totalPages={props.totalPages}
+            fetchSharedMessages={(page) => {
+              props.setPage(page)
+              props.fetchSharedMessages()
+            }}
+          />
+          <MessageCards
+            expand={props.expandMessage}
+            expandedMessage={props.expandedMessage}
+            sharedMessages={props.sharedMessages}
+          />
+          <Paginator
+            currentPage={props.currentPage}
+            totalPages={props.totalPages}
+            fetchSharedMessages={(page) => {
+              props.setPage(page)
+              props.fetchSharedMessages()
+            }}
+          />
+        </div>
+      )
+    }
   }
+
+  const { fetchSharedMessages } = props
+
+  useEffect(() => {
+    fetchSharedMessages()
+  }, [fetchSharedMessages])
 
   if (props.displayMessage) {
     return <DisplayMessage message={props.displayMessage} />
@@ -78,34 +114,11 @@ const Root = (props: StateProps & DispatchProps) => {
   return (
     <div className="root-container">
       <div className="root-heading">
-        <h1>
+        <h3>
           <FormattedMessage id="container.Root.heading" />
-        </h1>
-        <button className="reload" onClick={() => props.fetchSharedMessages()}>
-          <ReloadIcon />
-        </button>
+        </h3>
       </div>
-      <Paginator
-        currentPage={props.currentPage}
-        totalPages={props.totalPages}
-        fetchSharedMessages={(page) => {
-          props.setPage(page)
-          props.fetchSharedMessages()
-        }}
-      />
-      <MessageCards
-        expand={props.expandMessage}
-        expandedMessage={props.expandedMessage}
-        sharedMessages={props.sharedMessages}
-      />
-      <Paginator
-        currentPage={props.currentPage}
-        totalPages={props.totalPages}
-        fetchSharedMessages={(page) => {
-          props.setPage(page)
-          props.fetchSharedMessages()
-        }}
-      />
+      {showContent()}
     </div>
   )
 }

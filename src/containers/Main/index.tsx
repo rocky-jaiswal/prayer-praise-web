@@ -14,8 +14,6 @@ import {
 } from '../App/actions'
 import { isLoggedIn } from '../App/selectors'
 
-import './styles.css'
-
 interface StateProps {
   jwtToken: string
   username?: string
@@ -59,11 +57,13 @@ export const withLayout = (
   WrappedComponent: React.JSXElementConstructor<any>
 ) => {
   const MainHoc = (props: StateProps & DispatchProps) => {
+    const { jwtToken, fetchUserProfile } = props
+
     useEffect(() => {
-      if (props.jwtToken) {
-        props.fetchUserProfile()
+      if (jwtToken) {
+        fetchUserProfile()
       }
-    }, [])
+    }, [jwtToken, fetchUserProfile])
 
     return (
       <Layout

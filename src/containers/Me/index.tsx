@@ -66,26 +66,22 @@ function mapDispatchToProps(dispatch: Dispatch): DispatchProps {
 type AppProps = StateProps & DispatchProps
 
 const Me = (props: AppProps) => {
-  useEffect(() => {
-    props.fetchMyMessages()
-  }, [])
+  const { fetchMyMessages } = props
 
-  // componentWillReceiveProps(nextProps: StateProps) {
-  //   if (!nextProps.loggedIn) {
-  //     props.changeRoute('/')
-  //   }
-  // }
+  useEffect(() => {
+    fetchMyMessages()
+  }, [fetchMyMessages])
 
   if (props.loading || !props.messages) {
     return <LoadingSpinner />
   }
 
   return (
-    <div className="container">
-      <h2>
+    <div className="root-container">
+      <h3>
         <FormattedMessage id="container.Me.heading" />
         {props.isAdmin ? ' (Admin*)' : ''}
-      </h2>
+      </h3>
       <MyMessages
         displayMessage={props.displayMessage}
         messages={props.messages}

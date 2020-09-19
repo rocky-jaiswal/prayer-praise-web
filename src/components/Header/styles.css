@@ -1,48 +1,11 @@
-@import '../../main.css';
-
-.heading {
+.custom-logo {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  background-color: var(--main-red);
-  color: var(--main-white);
-  padding: 10px;
+  justify-content: center;
 }
 
-.heading h1 {
-  margin: 0;
-  padding: 0;
-}
-
-@media (max-height: 800px) {
-  .heading {
-    display: flex;
-    align-items: center;
+@media (max-width: 700px) {
+  a.brand-logo {
+    font-size: 1.3rem;
   }
-
-  .heading h1 {
-    font-size: 18px;
-    padding: 0;
-  }
-}
-
-.options {
-  display: flex;
-  flex-direction: row;
-}
-
-.options button.language {
-  margin-right: 5px;
-  font-size: 1.1em;
-  color: var(--main-white);
-  text-decoration: underline;
-  cursor: pointer;
-  background: none;
-  border: none;
-  outline: none;
-}
-
-.heading h1 a {
-  color: var(--main-white);
-  text-decoration: none;
 }

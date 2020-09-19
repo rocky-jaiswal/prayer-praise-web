@@ -1,15 +1,14 @@
-@import '../../main.css';
-
 .paginator {
   display: flex;
+  background: var(--grey-lighten-2);
+  margin: 10px 0;
 }
 
 .pager {
   margin-right: 10px;
   border: none;
   padding: 10px 13px;
-  border-radius: 50%;
-  background-color: var(--main-red);
+  background-color: var(--grey-darken-2);
   color: var(--main-white);
 }
 

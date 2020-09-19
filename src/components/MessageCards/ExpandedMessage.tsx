@@ -13,14 +13,14 @@ interface Props {
 const ExpandedMessage = (props: Props) => {
   return (
     <div
-      className={'expandedMessage'}
+      className="expanded-message"
       onClick={() => props.expand(props.message.id)}
     >
-      <div className={'topSection'}>
+      <div className="top-section">
         <Badge messageType={props.message.messageType} />
-        <div className={'username'}>{props.message.username}</div>
+        <div className="user-name">{props.message.username}</div>
       </div>
-      <div className={'expandedMessageText'}>
+      <div className="expanded-message-text">
         {cleanString(props.message.messageText)}
       </div>
     </div>

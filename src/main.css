@@ -15,6 +15,7 @@
 
 body {
   min-height: 100vh;
+  background-color: var(--grey-lighten-4);
 }
 
 .root-container {

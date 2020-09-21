@@ -24,9 +24,10 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --passWithNoTests",
+    "test:ci": "CI=true react-scripts test --passWithNoTests",
     "eject": "react-scripts eject",
-    "lint": "yarn eslint ./src/",
+    "lint": "eslint ./src/",
     "prettier": "prettier --write 'src/**/*'"
   },
   "devDependencies": {

@@ -27,4 +27,4 @@ jobs:
       - run: yarn lint
       - run: yarn test
       - run: yarn build
-      - run: ssh praywithus.site '/home/rockyj/app/setup.sh'
+      - run: ssh rockyj@praywithus.site '/home/rockyj/app/setup.sh'

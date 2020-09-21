@@ -31,7 +31,7 @@ jobs:
         uses: easingthemes/ssh-deploy@v2.1.5
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
-          SOURCE: 'dist/'
+          SOURCE: 'build/'
           REMOTE_HOST: praywithus.site
           REMOTE_USER: rockyj
           TARGET: /home/rockyj/app/web

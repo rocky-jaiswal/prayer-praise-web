@@ -27,4 +27,11 @@ jobs:
       - run: yarn lint
       - run: yarn test
       - run: yarn build
-      - run: ssh rockyj@praywithus.site '/home/rockyj/app/setup.sh'
+      - name: Deploy to Server
+        uses: easingthemes/ssh-deploy@v2.1.5
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
+          SOURCE: 'dist/'
+          REMOTE_HOST: praywithus.site
+          REMOTE_USER: rockyj
+          TARGET: /home/rockyj/app/web

@@ -6,6 +6,7 @@ import { ConnectedRouter } from 'connected-react-router'
 import { Auth0Provider } from '@auth0/auth0-react'
 
 import App from './containers/App'
+import Config from './config'
 import { configureStore } from './store'
 // import * as serviceWorker from './serviceWorker'
 
@@ -18,13 +19,10 @@ ReactDOM.render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
       <Auth0Provider
-        domain={process.env.REACT_APP_AUTH0_DOMAIN || 'example.com'}
-        clientId={process.env.REACT_APP_AUTH0_CLIENT_ID || 'changeme'}
-        redirectUri={
-          process.env.REACT_APP_AUTH0_REDIRECT_URI ||
-          `http://localhost:3000/authCallback`
-        }
-        audience={process.env.REACT_APP_AUTH0_AUDIENCE}
+        domain={Config.env.domain}
+        clientId={Config.env.clientId}
+        redirectUri={Config.env.redirectUri}
+        audience={Config.env.audience}
       >
         <React.StrictMode>
           <App />

@@ -27,4 +27,5 @@ export default {
   'message.deleted': 'The message was deleted successfully.',
   'message.failure': 'Save unsuccessful! Please refresh and try later.',
   'message.blank': ' ',
+  'message.retry': 'Please refresh / try again later.',
 }

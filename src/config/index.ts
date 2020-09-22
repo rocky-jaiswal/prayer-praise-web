@@ -1,23 +1,13 @@
-const environmentConfiguration = (environment: string) => {
-  const defaults = {
-    baseURL: `http://${window.location.hostname}:3001`,
-    callbackURL: `http://${window.location.hostname}:3000/authCallback`,
-  }
-
-  if (environment === 'development') {
-    return defaults
-  }
-  if (environment === 'heroku') {
-    return {
-      baseURL: `https://pray-api.berlin.church`,
-      callbackURL: `https://pray.berlin.church/authCallback`,
-    }
-  }
-  return defaults
-}
-
 const Config = {
-  env: environmentConfiguration(process.env.REACT_APP_APP_ENV || 'development'),
+  env: {
+    baseURL: process.env.REACT_APP_BASE_URL,
+    domain: process.env.REACT_APP_AUTH0_DOMAIN || 'example.com',
+    clientId: process.env.REACT_APP_AUTH0_CLIENT_ID || 'changeme',
+    redirectUri:
+      process.env.REACT_APP_AUTH0_REDIRECT_URI ||
+      `http://localhost:3000/authCallback`,
+    audience: process.env.REACT_APP_AUTH0_AUDIENCE || 'example.com',
+  },
 }
 
 export default Config

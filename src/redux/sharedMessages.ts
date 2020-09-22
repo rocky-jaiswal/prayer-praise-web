@@ -48,7 +48,7 @@ export function sharedMessagesReducer(
       return state
         .set('loading', false)
         .set('error', FETCH_SHARED_MESSAGES_FAILED)
-        .set('displayMessage', 'Please refresh / try again later.')
+        .set('displayMessage', 'message.retry')
 
     case EXPAND_MESSAGE:
       return state.set(

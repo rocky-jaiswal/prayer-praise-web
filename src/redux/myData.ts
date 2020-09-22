@@ -55,7 +55,7 @@ export function myDataReducer(
       return state
         .set('loading', false)
         .set('error', FETCH_MY_MESSAGES_FAILED)
-        .set('displayMessage', 'Please refresh / try again later.')
+        .set('displayMessage', 'message.retry')
 
     case DELETE_MESSAGE_INFLIGHT:
       return state.set('loading', true)
@@ -70,7 +70,7 @@ export function myDataReducer(
       return state
         .set('loading', false)
         .set('error', DELETE_MESSAGE_FAILED)
-        .set('displayMessage', 'Please refresh / try again later.')
+        .set('displayMessage', 'message.retry')
 
     case SET_MESSAGE_TO_VIEW:
       return state.set('selectedMessageId', action.payload)

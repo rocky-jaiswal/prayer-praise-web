@@ -31,7 +31,13 @@ jobs:
         uses: easingthemes/ssh-deploy@v2.1.5
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
-          SOURCE: 'build/'
+          SOURCE: 'build'
           REMOTE_HOST: praywithus.site
           REMOTE_USER: rockyj
           TARGET: /home/rockyj/app/web
+      - name: Execute SSH commmands on remote server
+        uses: JimCronqvist/action-ssh@master
+        with:
+          hosts: 'rockyj@praywithus.site'
+          privateKey: ${{ secrets.SERVER_SSH_KEY }}
+          command: ls -l /home/rockyj/app

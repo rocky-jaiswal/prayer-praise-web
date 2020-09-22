@@ -26,8 +26,12 @@ jobs:
       - run: yarn install
       - run: yarn lint
       - run: yarn test
-      - run: echo ${{ secrets.STAGING_ENV }} >> .env
-      - run: cat .env
+      - shell: bash
+        run: |
+          echo ${{ secrets.STAGING_ENV }} > .env
+      - shell: bash
+        run: |
+          cat .env
       - run: yarn build
       - name: Remove old build
         uses: JimCronqvist/action-ssh@master

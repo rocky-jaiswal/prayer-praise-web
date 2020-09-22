@@ -23,7 +23,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build && cp ./Dockerfile ./build && git rev-parse HEAD > ./build/sha.txt",
+    "build": "react-scripts build && cp ./Dockerfile ./build && git rev-parse HEAD > ./build/sha.txt && cp ./nginx.cong ./build",
     "test": "react-scripts test --passWithNoTests",
     "test:ci": "CI=true react-scripts test --passWithNoTests",
     "eject": "react-scripts eject",

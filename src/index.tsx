@@ -22,7 +22,6 @@ ReactDOM.render(
         domain={Config.env.domain}
         clientId={Config.env.clientId}
         redirectUri={Config.env.redirectUri}
-        audience={Config.env.audience}
       >
         <React.StrictMode>
           <App />

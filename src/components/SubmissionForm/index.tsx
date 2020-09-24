@@ -42,7 +42,7 @@ const SubmissionForm = (props: Props) => {
   return (
     <div className="formContainer">
       <h3>{getMessage(props.formType)}</h3>
-      <div className={'info'}>
+      <div className="info">
         {`${cleanString(props.messageText).length} / 500`}
         <FormattedMessage id="component.form.characters" />
       </div>

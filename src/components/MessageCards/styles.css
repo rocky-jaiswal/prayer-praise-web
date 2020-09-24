@@ -32,6 +32,12 @@
   height: 30px;
 }
 
+@media (max-width: 700px) {
+  .user-name {
+    display: none;
+  }
+}
+
 .user-name {
   color: var(--blue-grey-1);
   text-align: right;

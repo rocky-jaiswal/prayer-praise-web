@@ -51,5 +51,5 @@ jobs:
       - run: "ssh rockyj@praywithus.site 'rm -rf /home/rockyj/app/web/build/*'"
       - run: 'tar cvf build.tar build/'
       - run: 'scp -r /home/circleci/project/build.tar rockyj@praywithus.site:/home/rockyj/app/web/build/'
-      - run: "ssh rockyj@praywithus.site 'tar xvf /home/rockyj/app/web/build/build.tar --directory /home/rockyj/app/web/build/'"
+      - run: "ssh rockyj@praywithus.site 'tar xvf /home/rockyj/app/web/build/build.tar --directory /home/rockyj/app/web/'"
       - run: "ssh rockyj@praywithus.site '/home/rockyj/app/restart-service.sh web'"

@@ -1,0 +1,55 @@
+version: 2
+
+workflows:
+  version: 2
+  build_and_deploy:
+    jobs:
+      - test
+      - deploy:
+          requires:
+            - test
+
+jobs:
+  test:
+    docker:
+      - image: circleci/node:12
+    steps:
+      - checkout
+      - restore_cache:
+          key: v1-deps-{{ checksum "package.json" }}
+      - run: yarn install
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-deps-{{ checksum "package.json" }}
+      - run: yarn lint
+      - run: yarn test
+  deploy:
+    docker:
+      - image: circleci/node:12
+    steps:
+      - checkout
+      - restore_cache:
+          key: v1-deps-{{ checksum "package.json" }}
+      - run: yarn install
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-deps-{{ checksum "package.json" }}
+      - run: yarn sha
+      - run:
+          name: set config
+          command: |
+            UNENCODED_STAGING_CONFIG=$(echo $STAGING_CONFIG | base64 -d)
+            echo "$UNENCODED_STAGING_CONFIG" > .env
+      - run: yarn build
+      - add_ssh_keys:
+          fingerprints:
+            - '56:38:e4:ad:76:a5:4b:fe:b3:c5:5d:ab:a9:57:55:2e'
+      - run:
+          name: Update known hosts
+          command: ssh-keyscan -H praywithus.site >> ~/.ssh/known_hosts
+      - run: "ssh rockyj@praywithus.site 'rm -rf /home/rockyj/app/web/build/*'"
+      - run: "ssh rockyj@praywithus.site 'ls -l /home/rockyj/app/web/build/'"
+      - run: 'scp -r /home/circleci/project/build rockyj@praywithus.site:/home/rockyj/app/web/'
+      - run: "ssh rockyj@praywithus.site '/home/rockyj/app/restart-service.sh web'"

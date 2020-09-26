@@ -36,7 +36,6 @@ jobs:
           paths:
             - node_modules
           key: v1-deps-{{ checksum "package.json" }}
-      - run: yarn sha
       - run:
           name: set config
           command: |

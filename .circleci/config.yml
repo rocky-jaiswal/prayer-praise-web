@@ -49,6 +49,7 @@ jobs:
           name: Update known hosts
           command: ssh-keyscan -H praywithus.site >> ~/.ssh/known_hosts
       - run: "ssh rockyj@praywithus.site 'rm -rf /home/rockyj/app/web/build/*'"
-      - run: "ssh rockyj@praywithus.site 'ls -l /home/rockyj/app/web/build/'"
-      - run: 'scp -r /home/circleci/project/build rockyj@praywithus.site:/home/rockyj/app/web/'
+      - run: 'tar cvf build.tar build/'
+      - run: 'scp -r /home/circleci/project/build.tar rockyj@praywithus.site:/home/rockyj/app/web/build/'
+      - run: "ssh rockyj@praywithus.site 'tar xvf /home/rockyj/app/web/build/build.tar --directory /home/rockyj/app/web/build/'"
       - run: "ssh rockyj@praywithus.site '/home/rockyj/app/restart-service.sh web'"

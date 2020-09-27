@@ -16,10 +16,8 @@ const ExpandedMessage = (props: Props) => {
       className="expanded-message"
       onClick={() => props.expand(props.message.id)}
     >
-      <div className="top-section">
-        <Badge messageType={props.message.messageType} />
-        <div className="user-name">{props.message.username}</div>
-      </div>
+      <Badge messageType={props.message.messageType} />
+      <div className="expanded-user-name">{props.message.username}</div>
       <div className="expanded-message-text">
         {cleanString(props.message.messageText)}
       </div>

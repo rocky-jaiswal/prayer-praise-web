@@ -3,6 +3,7 @@ import { useEffect } from 'react'
 import { FormattedMessage } from 'react-intl'
 import { connect } from 'react-redux'
 import { push, RouterAction } from 'connected-react-router'
+import { ImmutableArray } from 'seamless-immutable'
 
 import LoadingSpinner from '../../components/LoadingSpinner'
 import MyMessages from '../../components/MyMessages'
@@ -28,7 +29,7 @@ interface StateProps {
   isAdmin: boolean
   displayMessage?: string
   selectedMessageId: number | null
-  messages: SharedMessageType[]
+  messages: ImmutableArray<SharedMessageType>
 }
 
 interface DispatchProps {
@@ -47,7 +48,7 @@ function mapStateToProps(state: RootStateType): StateProps {
     isAdmin: state.app.admin,
     displayMessage: state.myData.displayMessage,
     selectedMessageId: state.myData.selectedMessageId,
-    messages: state.myData.myMessages.asMutable(),
+    messages: state.myData.myMessages,
   }
 }
 

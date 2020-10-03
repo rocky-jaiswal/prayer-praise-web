@@ -1,4 +1,8 @@
 import * as React from 'react'
+// import { FormattedMessage } from 'react-intl'
+// import { Link } from 'react-router-dom'
+import { PrayerPraise } from '../../constants/enums'
+import { ImmutableObject } from 'seamless-immutable'
 
 import { ActionType, SharedMessageType } from '../../constants/types'
 import cleanString from '../../utils/cleanString'
@@ -6,8 +10,9 @@ import Badge from './Badge'
 import './styles.css'
 
 interface Props {
-  message: SharedMessageType
+  message: ImmutableObject<SharedMessageType>
   expand(id?: number): ActionType<number>
+  incrementAgreements(id: number): ActionType<number>
 }
 
 const ExpandedMessage = (props: Props) => {
@@ -20,6 +25,22 @@ const ExpandedMessage = (props: Props) => {
       <div className="expanded-user-name">{props.message.username}</div>
       <div className="expanded-message-text">
         {cleanString(props.message.messageText)}
+      </div>
+      <div className="expanded-links">
+        <button
+          onClick={(e) => {
+            e.stopPropagation()
+            props.incrementAgreements(props.message.id)
+          }}
+        >
+          <span role="img" aria-label="agree">
+            {`${props.message.agreements} `}
+            {props.message.messageType === PrayerPraise.PRAYER ? '🙏' : '🙌'}
+          </span>
+        </button>
+        {/* <Link to={`/sharedMessages/${props.message.id}`} className="">
+          <FormattedMessage id="components.Message.comments" />
+        </Link> */}
       </div>
     </div>
   )

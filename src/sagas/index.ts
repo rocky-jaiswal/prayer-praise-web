@@ -7,6 +7,7 @@ import { fetchSharedMessagesWatcher } from './fetchSharedMessages'
 import { deleteMessageWatcher } from './deleteMessage'
 import { editMessageWatcher } from './editMessage'
 import { updateMessageWatcher } from './updateMessage'
+import { incrementAgreementsWatcher } from './incrementAgreements'
 
 export default [
   fetchUserProfileWatcher,
@@ -18,4 +19,5 @@ export default [
   deleteMessageWatcher,
   editMessageWatcher,
   updateMessageWatcher,
+  incrementAgreementsWatcher,
 ]

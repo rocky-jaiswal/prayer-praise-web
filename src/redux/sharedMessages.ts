@@ -1,11 +1,17 @@
 import * as Immutable from 'seamless-immutable'
+import { Immutable as ImmutableType } from 'seamless-immutable'
 
-import { SharedMessagesType, ActionType } from '../constants/types'
+import {
+  SharedMessagesType,
+  SharedMessageType,
+  ActionType,
+} from '../constants/types'
 import {
   EXPAND_MESSAGE,
   FETCH_SHARED_MESSAGES_FAILED,
   FETCH_SHARED_MESSAGES_INFLIGHT,
   FETCH_SHARED_MESSAGES_SUCCESS,
+  INCREMENT_AGREEMENTS_SUCCESS,
   SET_PAGE,
 } from '../containers/Root/constants'
 
@@ -55,6 +61,18 @@ export function sharedMessagesReducer(
         'expandedMessage',
         state.expandedMessage === action.payload ? undefined : action.payload
       )
+
+    case INCREMENT_AGREEMENTS_SUCCESS:
+      const msgs: ImmutableType<SharedMessagesType> = state.messages.map(
+        (msg: ImmutableType<SharedMessageType>) => {
+          if (msg.id === action.payload.id) {
+            return msg.set('agreements', action.payload.agreements)
+          }
+          return msg
+        }
+      )
+
+      return state.set('messages', msgs)
 
     default:
       return state

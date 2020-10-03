@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { FormattedMessage } from 'react-intl'
+import { ImmutableArray } from 'seamless-immutable'
 
 import { SharedMessageType, ActionType } from '../../constants/types'
 import DisplayMessage from '../DisplayMessage'
@@ -8,7 +9,7 @@ import ExpandedMessage from '../MessageCards/ExpandedMessage'
 import './styles.css'
 
 interface Props {
-  messages: SharedMessageType[]
+  messages: ImmutableArray<SharedMessageType>
   selectedMessageId: number | null
   displayMessage?: string
   deleteMessage(payload: number): ActionType<number>
@@ -27,6 +28,7 @@ const MyMessages = (props: Props) => {
             <ExpandedMessage
               message={message}
               expand={() => ({ type: 'noop', payload: 0 })}
+              incrementAgreements={(id: number) => ({ type: '', payload: id })}
             />
             <div className="message-actions">
               <span className="shared-status">{message.sharedStatus}</span>

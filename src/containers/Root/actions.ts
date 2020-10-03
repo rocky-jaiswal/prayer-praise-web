@@ -4,6 +4,8 @@ import {
   FETCH_SHARED_MESSAGES_FAILED,
   FETCH_SHARED_MESSAGES_INFLIGHT,
   FETCH_SHARED_MESSAGES_SUCCESS,
+  INCREMENT_AGREEMENTS,
+  INCREMENT_AGREEMENTS_SUCCESS,
   SET_PAGE,
 } from './constants'
 
@@ -19,7 +21,6 @@ export function fetchSharedMessagesInProgress() {
   }
 }
 
-// tslint:disable-next-line:no-any
 export function fetchSharedMessagesSuccessful(payload: any) {
   return {
     payload,
@@ -44,5 +45,19 @@ export function setPage(payload: number) {
   return {
     payload,
     type: SET_PAGE,
+  }
+}
+
+export function incrementAgreements(payload: number) {
+  return {
+    payload,
+    type: INCREMENT_AGREEMENTS,
+  }
+}
+
+export function incrementAgreementsSuccessful(payload: any) {
+  return {
+    payload,
+    type: INCREMENT_AGREEMENTS_SUCCESS,
   }
 }

@@ -7,7 +7,7 @@ export interface ActionType<T> {
   payload?: T
 }
 
-interface Auth0 {
+export type Auth0Params = {
   audience: string
   clientID: string
   domain: string
@@ -16,9 +16,7 @@ interface Auth0 {
   scope: string
 }
 
-export type Auth0Params = Auth0
-
-interface AppState {
+export type AppStateType = {
   jwtToken?: string | null
   error?: string | null
   locale: LocaleEnum
@@ -27,9 +25,8 @@ interface AppState {
   username?: string
   admin: boolean
 }
-export type AppStateType = AppState
 
-interface MessagesState {
+export type MessagesStateType = {
   messageType: PrayerPraise
   messageText: string
   sharedStatus: ShareStatus
@@ -37,61 +34,50 @@ interface MessagesState {
   error?: string
   displayMessage?: string
 }
-export type MessagesStateType = MessagesState
 
-interface SharedMessage {
+export type SharedMessageType = {
   id: number
   messageType: PrayerPraise
   messageText: string
   sharedStatus: ShareStatus
-  shortUsername: string
   username: string
+  agreements: number
 }
 
-export type SharedMessageType = SharedMessage
-
-interface SharedMessages {
+export type SharedMessagesType = {
   displayMessage?: string
   error?: string
   expandedMessage?: number
   loading: boolean
-  messages: SharedMessage[]
+  messages: SharedMessageType[]
   currentPage: number
   size: number
   totalElements: number
   totalPages: number
 }
 
-export type SharedMessagesType = SharedMessages
-
-interface MessageForEdit {
+export type MessageForEditType = {
   id?: number
   messageText?: string
   sharedStatus?: ShareStatus
   messageType?: PrayerPraise
 }
 
-export type MessageForEditType = MessageForEdit
-
-interface MyData {
+export type MyDataType = {
   displayMessage?: string
   error?: string
   loading: boolean
-  myMessages: SharedMessage[]
-  messageForEdit: MessageForEdit
+  myMessages: SharedMessageType[]
+  messageForEdit: MessageForEditType
   selectedMessageId: number | null
 }
 
-export type MyDataType = MyData
-
-interface RootState {
-  app: AppState
-  messages: MessagesState
-  sharedMessages: Immutable<SharedMessages>
-  myData: Immutable<MyData>
+export type RootStateType = {
+  app: AppStateType
+  messages: MessagesStateType
+  sharedMessages: Immutable<SharedMessagesType>
+  myData: Immutable<MyDataType>
   router?: any
 }
-
-export type RootStateType = RootState
 
 export type Dispatch = ReduxDispatch<Action>

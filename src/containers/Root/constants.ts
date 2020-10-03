@@ -7,4 +7,7 @@ export const FETCH_SHARED_MESSAGES_SUCCESS =
 export const FETCH_SHARED_MESSAGES_FAILED =
   'app/PrayerPraiseForm/FETCH_SHARED_MESSAGES_FAILED'
 export const EXPAND_MESSAGE = 'app/PrayerPraiseForm/EXPAND_MESSAGE'
+export const INCREMENT_AGREEMENTS = 'app/PrayerPraiseForm/INCREMENT_AGREEMENTS'
+export const INCREMENT_AGREEMENTS_SUCCESS =
+  'app/PrayerPraiseForm/INCREMENT_AGREEMENTS_SUCCESS'
 export const SET_PAGE = 'app/PrayerPraiseForm/SET_PAGE'

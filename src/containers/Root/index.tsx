@@ -2,6 +2,7 @@ import * as React from 'react'
 import { useEffect } from 'react'
 import { FormattedMessage } from 'react-intl'
 import { connect } from 'react-redux'
+import { ImmutableArray } from 'seamless-immutable'
 
 import {
   Dispatch,
@@ -10,7 +11,12 @@ import {
   ActionType,
 } from '../../constants/types'
 import { withLayout } from '../Main'
-import { expandMessage, fetchSharedMessages, setPage } from './actions'
+import {
+  expandMessage,
+  fetchSharedMessages,
+  incrementAgreements,
+  setPage,
+} from './actions'
 
 import DisplayMessage from '../../components/DisplayMessage'
 import ReloadAction from '../../components/ReloadAction'
@@ -22,7 +28,7 @@ interface StateProps {
   displayMessage?: string
   expandedMessage?: number
   loading: boolean
-  sharedMessages: SharedMessageType[]
+  sharedMessages: ImmutableArray<SharedMessageType>
   currentPage: number
   size: number
   totalElements: number
@@ -32,6 +38,7 @@ interface StateProps {
 interface DispatchProps {
   fetchSharedMessages(): ActionType<void>
   expandMessage(id?: number): ActionType<number>
+  incrementAgreements(id: number): ActionType<number>
   setPage(page: number): ActionType<number>
 }
 
@@ -40,7 +47,7 @@ const mapStateToProps = (state: RootStateType): StateProps => {
     displayMessage: state.sharedMessages.displayMessage,
     expandedMessage: state.sharedMessages.expandedMessage,
     loading: state.sharedMessages.loading,
-    sharedMessages: state.sharedMessages.messages.asMutable(),
+    sharedMessages: state.sharedMessages.messages,
     currentPage: state.sharedMessages.currentPage,
     size: state.sharedMessages.size,
     totalElements: state.sharedMessages.totalElements,
@@ -53,6 +60,8 @@ const mapDispatchToProps = (dispatch: Dispatch): DispatchProps => {
     setPage: (page: number) => dispatch(setPage(page)),
     expandMessage: (payload: number) => dispatch(expandMessage(payload)),
     fetchSharedMessages: () => dispatch(fetchSharedMessages()),
+    incrementAgreements: (payload: number) =>
+      dispatch(incrementAgreements(payload)),
   }
 }
 
@@ -86,6 +95,7 @@ const Root = (props: StateProps & DispatchProps) => {
             expand={expandMessage}
             expandedMessage={props.expandedMessage}
             sharedMessages={props.sharedMessages}
+            incrementAgreements={props.incrementAgreements}
           />
           {showPaginator()}
         </div>

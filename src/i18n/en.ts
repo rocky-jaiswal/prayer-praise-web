@@ -5,6 +5,7 @@ export default {
   'components.Footer.main': '❤ Berlin Church 2018',
   'components.Badge.praise': 'Praise',
   'components.Badge.prayer': 'Prayer',
+  'components.Message.comments': 'Comments',
   'actions.view': 'View',
   'actions.collapse': '✕',
   'actions.edit': 'Edit',

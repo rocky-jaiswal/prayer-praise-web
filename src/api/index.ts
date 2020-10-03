@@ -54,6 +54,12 @@ const AppAPI = {
       },
     })
   },
+
+  async incrementAgreements(messageId: number) {
+    return AppAPI.init().post(
+      Config.env.baseURL + `/messages/${messageId}/agreements`
+    )
+  },
 }
 
 export default AppAPI

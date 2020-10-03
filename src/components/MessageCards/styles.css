@@ -65,5 +65,18 @@
 }
 
 .expanded-message-text {
+  display: flex;
+  flex-grow: 1;
   padding: 10px;
+}
+
+.expanded-links {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.expanded-links button {
+  background-color: var(--grey-darken-1);
 }

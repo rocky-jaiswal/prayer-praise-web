@@ -1,4 +1,4 @@
-import * as Immutable from 'seamless-immutable'
+import Immutable from 'seamless-immutable'
 
 import { MyDataType, ActionType } from '../constants/types'
 import {

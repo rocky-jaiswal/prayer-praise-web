@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { ImmutableObject } from 'seamless-immutable'
 
 import { ActionType, SharedMessageType } from '../../constants/types'
 import cleanString from '../../utils/cleanString'
@@ -6,7 +7,7 @@ import Badge from './Badge'
 import './styles.css'
 
 interface Props {
-  message: SharedMessageType
+  message: ImmutableObject<SharedMessageType>
   expand(id?: number): ActionType<number>
 }
 

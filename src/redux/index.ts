@@ -11,6 +11,10 @@ import {
   sharedMessagesReducer,
   initialState as sharedMessagesInitialState,
 } from './sharedMessages'
+import {
+  sharedMessageDetailsReducer,
+  initialState as sharedMessageDetailsInitialState,
+} from './sharedMessage'
 // import { routeReducer } from './route'
 
 import { RootStateType, ActionType } from '../constants/types'
@@ -20,6 +24,7 @@ export const reduxInitialState: RootStateType = {
   messages: messagesInitialState,
   myData: myDataInitialState,
   sharedMessages: sharedMessagesInitialState,
+  sharedMessageDetails: sharedMessageDetailsInitialState,
 }
 
 export function createReducer(history: any): Reducer<RootStateType> {
@@ -29,6 +34,7 @@ export function createReducer(history: any): Reducer<RootStateType> {
     myData: myDataReducer,
     router: connectRouter(history),
     sharedMessages: sharedMessagesReducer,
+    sharedMessageDetails: sharedMessageDetailsReducer,
   })
 
   const rootReducer = (

@@ -1,6 +1,6 @@
 import * as React from 'react'
-// import { FormattedMessage } from 'react-intl'
-// import { Link } from 'react-router-dom'
+import { FormattedMessage } from 'react-intl'
+import { Link } from 'react-router-dom'
 import { PrayerPraise } from '../../constants/enums'
 import { ImmutableObject } from 'seamless-immutable'
 
@@ -11,7 +11,8 @@ import './styles.css'
 
 interface Props {
   message: ImmutableObject<SharedMessageType>
-  expand(id?: number): ActionType<number>
+  hideCommentsLink?: boolean
+  expand?(id?: number): ActionType<number>
   incrementAgreements(id: number): ActionType<number>
 }
 
@@ -19,7 +20,7 @@ const ExpandedMessage = (props: Props) => {
   return (
     <div
       className="expanded-message"
-      onClick={() => props.expand(props.message.id)}
+      onClick={() => props.expand && props.expand(props.message.id)}
     >
       <Badge messageType={props.message.messageType} />
       <div className="expanded-user-name">{props.message.username}</div>
@@ -38,9 +39,11 @@ const ExpandedMessage = (props: Props) => {
             {props.message.messageType === PrayerPraise.PRAYER ? '🙏' : '🙌'}
           </span>
         </button>
-        {/* <Link to={`/sharedMessages/${props.message.id}`} className="">
-          <FormattedMessage id="components.Message.comments" />
-        </Link> */}
+        {!props.hideCommentsLink && (
+          <Link to={`/shared/${props.message.id}`} className="comments-link">
+            <FormattedMessage id="components.Message.comments" />
+          </Link>
+        )}
       </div>
     </div>
   )

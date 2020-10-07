@@ -21,14 +21,14 @@
 
 .praise-badge {
   background: var(--grey-lighten-2);
-  padding: 5px;
+  padding: 5px 10px;
   height: 30px;
 }
 
 .prayer-badge {
   background: var(--grey-darken-2);
   color: var(--grey-lighten-2);
-  padding: 5px;
+  padding: 5px 10px;
   height: 30px;
 }
 
@@ -39,7 +39,7 @@
 }
 
 .user-name {
-  color: var(--blue-grey-1);
+  color: var(--grey-darken-2);
   text-align: right;
 }
 
@@ -53,13 +53,13 @@
 .expanded-message {
   display: flex;
   flex-direction: column;
-  min-height: 300px;
+  min-height: 280px;
   width: 100%;
   border-bottom: 1px solid var(--grey-darken-2);
 }
 
 .expanded-message .expanded-user-name {
-  color: var(--blue-grey-1);
+  color: var(--grey-darken-2);
   padding-left: 10px;
   text-align: left;
 }
@@ -79,4 +79,9 @@
 
 .expanded-links button {
   background-color: var(--grey-darken-1);
+}
+
+.comments-link {
+  color: var(--blue-grey-1);
+  text-decoration: underline;
 }

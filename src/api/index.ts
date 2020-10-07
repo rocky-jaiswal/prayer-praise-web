@@ -55,9 +55,22 @@ const AppAPI = {
     })
   },
 
-  async incrementAgreements(messageId: number) {
+  async incrementAgreements(messageId: string) {
     return AppAPI.init().post(
       Config.env.baseURL + `/messages/${messageId}/agreements`
+    )
+  },
+
+  async fetchSharedMessage(messageId: string) {
+    return AppAPI.init().get(
+      Config.env.baseURL + `/sharedMessages/${messageId}`
+    )
+  },
+
+  async createComment({ msgId, comment }: Record<string, string>) {
+    return AppAPI.init().post(
+      Config.env.baseURL + `/sharedMessages/${msgId}/comments`,
+      { comment: { commentText: comment } }
     )
   },
 }

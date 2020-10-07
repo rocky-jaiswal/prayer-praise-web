@@ -50,7 +50,8 @@
   },
   "prettier": {
     "semi": false,
-    "singleQuote": true
+    "singleQuote": true,
+    "tabWidth": 2
   },
   "eslintConfig": {
     "extends": "react-app"

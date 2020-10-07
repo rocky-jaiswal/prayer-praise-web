@@ -1,4 +1,4 @@
-import * as Immutable from 'seamless-immutable'
+import Immutable from 'seamless-immutable'
 import { LOCATION_CHANGE } from 'connected-react-router'
 
 import { ActionType } from '../constants/types'

@@ -35,6 +35,12 @@ export type MessagesStateType = {
   displayMessage?: string
 }
 
+export type Comment = {
+  id: number
+  commentText: string
+  username: string
+}
+
 export type SharedMessageType = {
   id: number
   messageType: PrayerPraise
@@ -42,6 +48,7 @@ export type SharedMessageType = {
   sharedStatus: ShareStatus
   username: string
   agreements: number
+  comments: Comment[]
 }
 
 export type SharedMessagesType = {
@@ -72,11 +79,21 @@ export type MyDataType = {
   selectedMessageId: number | null
 }
 
+export type SelectedSharedMessageType = {
+  newComment: string
+  selectedSharedMessage?: Immutable<SharedMessageType>
+  displayMessage?: string
+  error?: string
+  loading: boolean
+  loadingComments: boolean
+}
+
 export type RootStateType = {
   app: AppStateType
   messages: MessagesStateType
   sharedMessages: Immutable<SharedMessagesType>
   myData: Immutable<MyDataType>
+  sharedMessageDetails: SelectedSharedMessageType
   router?: any
 }
 

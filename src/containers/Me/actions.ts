@@ -86,7 +86,6 @@ export function editMessageInProgress() {
   }
 }
 
-// tslint:disable-next-line:no-any
 export function editMessageSuccessful(payload: any) {
   return {
     payload,
@@ -124,7 +123,6 @@ export function updateMessageFailed() {
   }
 }
 
-// tslint:disable-next-line:no-any
 export function changeExistingMessageText(payload: any) {
   return {
     payload,

@@ -1,4 +1,4 @@
-import * as Immutable from 'seamless-immutable'
+import Immutable from 'seamless-immutable'
 
 import { PrayerPraise, ShareStatus } from '../constants/enums'
 import { MessagesStateType, ActionType } from '../constants/types'

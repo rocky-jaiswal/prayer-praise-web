@@ -4,6 +4,7 @@ import EditMessage from '../containers/EditMessage'
 import Me from '../containers/Me'
 import Praise from '../containers/Praise'
 import Prayer from '../containers/Prayer'
+import SharedMessage from '../containers/SharedMessage'
 
 interface RouteDefinition {
   sequence: number
@@ -52,6 +53,12 @@ const routes: Routes = {
     exact: true,
     path: '/prayer',
     sequence: 6,
+  },
+  sharedMessage: {
+    component: SharedMessage,
+    exact: true,
+    path: '/shared/:id',
+    sequence: 7,
   },
 }
 

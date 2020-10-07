@@ -1,0 +1,14 @@
+.add-comment {
+  border: 1px solid var(--grey-lighten-1);
+  width: 100%;
+  margin: 20px;
+  padding: 0 10px;
+}
+
+.add-comment p {
+  color: var(--grey-darken-4);
+}
+
+.add-comment button {
+  background-color: var(--grey-lighten-1);
+}

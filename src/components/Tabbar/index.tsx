@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 
 interface Props {
   loggedIn: boolean
+  admin: boolean
 }
 
 const Tabbar = (props: Props) => {
@@ -30,6 +31,15 @@ const Tabbar = (props: Props) => {
             <li className="tab">
               <Link to="/me">
                 <FormattedMessage id="component.Sidebar.meLink" />
+              </Link>
+            </li>
+          ) : (
+            <li />
+          )}
+          {props.admin ? (
+            <li className="tab">
+              <Link to="/admin">
+                <FormattedMessage id="component.Sidebar.adminLink" />
               </Link>
             </li>
           ) : (

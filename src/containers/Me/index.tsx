@@ -80,7 +80,6 @@ const Me = (props: AppProps) => {
     <div className="root-container">
       <h3>
         <FormattedMessage id="container.Me.heading" />
-        {props.isAdmin ? ' (Admin*)' : ''}
       </h3>
       <MyMessages
         displayMessage={props.displayMessage}

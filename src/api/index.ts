@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 import Config from '../config'
-import { SharedMessageType } from '../constants/types'
+import { MessageForEditType, SharedMessageType } from '../constants/types'
 
 const AppAPI = {
   init() {
@@ -72,6 +72,40 @@ const AppAPI = {
       Config.env.baseURL + `/sharedMessages/${msgId}/comments`,
       { comment: { commentText: comment } }
     )
+  },
+
+  async getAdminMessages() {
+    return AppAPI.init().get(Config.env.baseURL + '/admin/messages')
+  },
+
+  async getAdminComments() {
+    return AppAPI.init().get(Config.env.baseURL + '/admin/comments')
+  },
+
+  async deleteMessageForAdmin(id: number) {
+    return AppAPI.init().delete(Config.env.baseURL + `/admin/messages/${id}`)
+  },
+
+  async deleteCommentForAdmin(id: number) {
+    return AppAPI.init().delete(Config.env.baseURL + `/admin/comments/${id}`)
+  },
+
+  async updateMessageForAdmin(message: MessageForEditType) {
+    return AppAPI.init().put(
+      Config.env.baseURL + `/admin/messages/${message.id}`,
+      {
+        message: {
+          messageText: message.messageText,
+          sharedStatus: message.sharedStatus,
+        },
+      }
+    )
+  },
+
+  async updateCommentForAdmin({ id, commentText }: Record<string, string>) {
+    return AppAPI.init().put(Config.env.baseURL + `/admin/comments/${id}`, {
+      comment: { commentText },
+    })
   },
 }
 

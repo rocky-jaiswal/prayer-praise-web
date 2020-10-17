@@ -26,3 +26,7 @@ button:focus {
   outline: none;
   background-color: var(--grey-darken-2);
 }
+
+a {
+  color: var(--grey-darken-3);
+}

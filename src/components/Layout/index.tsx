@@ -14,6 +14,7 @@ interface Props {
   children?: React.ReactElement<{}>
   sidebarVisible: boolean
   loggedIn: boolean
+  admin: boolean
   switchLanguage(payload: string): ActionType<string>
   toggleSidebar(): ActionType<void>
   logout(): ActionType<void>
@@ -22,7 +23,7 @@ interface Props {
 const Layout = (props: Props) => {
   return (
     <div>
-      <Header loggedIn={props.loggedIn} />
+      <Header loggedIn={props.loggedIn} admin={props.admin} />
       <div className="main">
         <div className="container custom">
           <div className="page">{props.children}</div>

@@ -12,6 +12,7 @@ import './styles.css'
 interface Props {
   message: ImmutableObject<SharedMessageType>
   hideCommentsLink?: boolean
+  disableAgreement?: boolean
   expand?(id?: number): ActionType<number>
   incrementAgreements(id: number): ActionType<number>
 }
@@ -33,6 +34,7 @@ const ExpandedMessage = (props: Props) => {
             e.stopPropagation()
             props.incrementAgreements(props.message.id)
           }}
+          disabled={props.disableAgreement}
         >
           <span role="img" aria-label="agree">
             {`${props.message.agreements} `}

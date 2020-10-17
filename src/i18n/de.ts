@@ -21,6 +21,7 @@ export default {
   'component.Sidebar.prayerLink': 'Prayer',
   'component.Sidebar.praiseLink': 'Praise',
   'component.Sidebar.meLink': 'Me',
+  'component.Sidebar.adminLink': 'Admin',
   'component.FormHeading.Prayer': 'Submit Prayer',
   'component.FormHeading.Praise': 'Submit Praise',
   'component.form.characters': ' chars',

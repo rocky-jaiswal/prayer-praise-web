@@ -5,6 +5,9 @@ import Me from '../containers/Me'
 import Praise from '../containers/Praise'
 import Prayer from '../containers/Prayer'
 import SharedMessage from '../containers/SharedMessage'
+import Admin from '../containers/Admin'
+import AdminMessages from '../containers/Admin/AdminMessages'
+import AdminComments from '../containers/Admin/AdminComments'
 
 interface RouteDefinition {
   sequence: number
@@ -59,6 +62,24 @@ const routes: Routes = {
     exact: true,
     path: '/shared/:id',
     sequence: 7,
+  },
+  admin: {
+    component: Admin,
+    exact: true,
+    path: '/admin',
+    sequence: 8,
+  },
+  adminMessages: {
+    component: AdminMessages,
+    exact: true,
+    path: '/admin/messages',
+    sequence: 9,
+  },
+  adminComments: {
+    component: AdminComments,
+    exact: true,
+    path: '/admin/comments',
+    sequence: 10,
   },
 }
 

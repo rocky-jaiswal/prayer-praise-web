@@ -8,6 +8,7 @@ import './styles.css'
 
 interface Props {
   loggedIn: boolean
+  admin: boolean
 }
 
 const Header = (props: Props) => {
@@ -20,7 +21,7 @@ const Header = (props: Props) => {
           </Link>
         </div>
       </div>
-      <Tabbar loggedIn={props.loggedIn} />
+      <Tabbar loggedIn={props.loggedIn} admin={props.admin} />
     </nav>
   )
 }

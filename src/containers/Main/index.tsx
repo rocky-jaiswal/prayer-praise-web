@@ -20,6 +20,7 @@ interface StateProps {
   profilePic?: string
   sidebarVisible: boolean
   loggedIn: boolean
+  admin: boolean
   children: any
   match: any
 }
@@ -39,6 +40,7 @@ function mapStateToProps(state: RootStateType, ownProps: any): StateProps {
     profilePic: state.app.profilePic,
     sidebarVisible: state.app.sidebarVisible,
     loggedIn: isLoggedIn(state.app),
+    admin: state.app.admin,
     ...ownProps,
   }
 }
@@ -73,6 +75,7 @@ export const withLayout = (
         switchLanguage={props.switchLanguage}
         toggleSidebar={props.toggleSidebar}
         loggedIn={props.loggedIn}
+        admin={props.admin}
         logout={props.logout}
       >
         <WrappedComponent match={props.match} />

@@ -27,6 +27,7 @@ const MyMessages = (props: Props) => {
           <div className="my-message" key={message.id}>
             <ExpandedMessage
               message={message}
+              disableAgreement={true}
               expand={() => ({ type: 'noop', payload: 0 })}
               incrementAgreements={(id: number) => ({ type: '', payload: id })}
             />
@@ -48,7 +49,11 @@ const MyMessages = (props: Props) => {
               <span>
                 <button
                   className="deleteButton"
-                  onClick={() => props.deleteMessage(message.id)}
+                  onClick={() => {
+                    if (window.confirm('Are you sure?')) {
+                      props.deleteMessage(message.id)
+                    }
+                  }}
                 >
                   <FormattedMessage id="actions.delete" />
                 </button>

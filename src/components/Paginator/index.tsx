@@ -17,6 +17,7 @@ const Paginator = (props: Props) => {
         .map((i) => {
           return (
             <button
+              aria-label="pagination"
               disabled={i === props.currentPage}
               className={i === props.currentPage ? 'pager' : 'pager-inactive'}
               key={i}

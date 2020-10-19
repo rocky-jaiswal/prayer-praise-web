@@ -10,7 +10,11 @@ interface Props {
 const ReloadAction = (props: Props) => {
   return (
     <div>
-      <button className="reload-action" onClick={() => props.action()}>
+      <button
+        className="reload-action"
+        onClick={() => props.action()}
+        aria-label="reload"
+      >
         <ReloadIcon />
       </button>
     </div>

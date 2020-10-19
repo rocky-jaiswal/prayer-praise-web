@@ -12,23 +12,23 @@ const Tabbar = (props: Props) => {
     <div className="nav-content tabbar-color">
       <div className="container">
         <ul className="tabs tabs-transparent">
-          <li className="tab">
+          <li className="tab" aria-label="home-link">
             <Link to="/">
               <FormattedMessage id="component.Sidebar.homeLink" />
             </Link>
           </li>
           <li className="tab">
-            <Link to="/prayer">
+            <Link to="/prayer" aria-label="add-prayer-link">
               <FormattedMessage id="component.Sidebar.prayerLink" />
             </Link>
           </li>
           <li className="tab">
-            <Link to="/praise">
+            <Link to="/praise" aria-label="add-praise-link">
               <FormattedMessage id="component.Sidebar.praiseLink" />
             </Link>
           </li>
           {props.loggedIn ? (
-            <li className="tab">
+            <li className="tab" aria-label="my-data-link">
               <Link to="/me">
                 <FormattedMessage id="component.Sidebar.meLink" />
               </Link>
@@ -38,7 +38,7 @@ const Tabbar = (props: Props) => {
           )}
           {props.admin ? (
             <li className="tab">
-              <Link to="/admin">
+              <Link to="/admin" aria-label="admin-link">
                 <FormattedMessage id="component.Sidebar.adminLink" />
               </Link>
             </li>

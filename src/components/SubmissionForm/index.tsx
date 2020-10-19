@@ -61,6 +61,7 @@ const SubmissionForm = (props: Props) => {
         }
       />
       <button
+        aria-label="submit"
         disabled={
           cleanString(props.messageText).trim().length === 0 ||
           cleanString(props.messageText).length > 500
